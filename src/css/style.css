@@ -9,3 +9,31 @@ body{
     color: #D3D3D3;
     font-family: 'myFont'; 
 }
+.nav-link-custom {
+    position: relative;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-family: 'myFont';
+  }
+  
+  .nav-link-custom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: cyan; /* ou a cor que quiser */
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link-custom:hover::after {
+    width: 50%;
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+  }
+  .nav-link-custom:hover {
+    color:cyan;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 10px cyan, 0 0 100px cyan, 0 0 100px cyan; 
+  }
