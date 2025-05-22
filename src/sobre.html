@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberLab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+    <script>
+        //Carregar conteúdo do navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o navbar:', error);
+            });
+    </script>
+    <h1 class="txt">Bem-vindo ao CyberLab</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+
+    <h1 class="txt">Sobre</h1> 
+    
+    <h3><p> O CyberLab é um laboratório de cibersegurança que visa promover a educação e a conscientização sobre
+        segurança digital. Nossa missão é capacitar indivíduos e organizações a protegerem suas informações e sistemas
+        contra ameaças cibernéticas.</p></h3>
+        <h3><p> Aqui você vai aprender a se defender de ataques</p></h3>
+    <h3><p> Oferecemos cursos, workshops e recursos para ajudar nossos alunos a desenvolverem habilidades
+        práticas em cibersegurança. Nossa equipe é composta por especialistas da indústria que compartilham seu
+        conhecimento e experiência para preparar nossos alunos para os desafios do mundo real.</p></h3>
+    <h3><p> No CyberLab, acreditamos que a educação é a chave para um futuro mais seguro. Junte-se a nós e
+        faça parte da comunidade de cibersegurança!</p></h3>
+        
+</body>
+</html>
