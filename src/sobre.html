@@ -26,76 +26,87 @@
     </script>
     <h1 class="txt">Sobre</h1>
     <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-            <!-- White Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-cyan shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-info"><i class="bi bi-shield-lock"></i> White Hat</h5>
-                        <p class="card-text">Hackers éticos que ajudam empresas a identificar e corrigir falhas de
-                            segurança. Trabalham de forma legal e profissional.</p>
-                    </div>
-                </div>
+        <div class="d-flex flex-wrap justify-content-center gap-4"> <!-- Alterado de gap-4 para gap-5 -->
+          <!-- White Hat -->
+          <div class="flip-card border-white">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/white-hat.png" alt="White Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-shield-lock"></i> White Hat</p>
+                <p>Hackers éticos que ajudam empresas a identificar e corrigir falhas de segurança. Trabalham de forma legal e profissional.</p>
+              </div>
             </div>
-
-            <!-- Black Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-light shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-light"><i class="bi bi-exclamation-triangle"></i> Black Hat</h5>
-                        <p class="card-text">Hackers maliciosos que invadem sistemas para roubo de dados, extorsão e
-                            destruição. Atuam fora da lei.</p>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Black Hat -->
+          <div class="flip-card border-black">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/black-hat.png" alt="Black Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-exclamation-triangle"></i> Black Hat</p>
+                <p>Hackers maliciosos que invadem sistemas para roubo de dados, extorsão e destruição. Atuam fora da lei.</p>
+              </div>
             </div>
-
-            <!-- Grey Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-secondary shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-secondary"><i class="bi bi-circle-half"></i> Grey Hat</h5>
-                        <p class="card-text">Atuam na fronteira entre o legal e o ilegal. Podem invadir sistemas sem
-                            permissão, mas sem intenção de prejudicar.</p>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Grey Hat -->
+          <div class="flip-card border-grey">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/gray-hat.png" alt="Grey Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-circle-half"></i> Grey Hat</p>
+                <p>Atuam na fronteira entre o legal e o ilegal. Podem invadir sistemas sem permissão, mas sem intenção de prejudicar.</p>
+              </div>
             </div>
-
-            <!-- Red Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-danger shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger"><i class="bi bi-emoji-angry"></i> Red Hat</h5>
-                        <p class="card-text">Hackers que combatem Black Hats com métodos agressivos, muitas vezes
-                            ilegais. São como justiceiros digitais.</p>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Red Hat -->
+          <div class="flip-card border-red">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/red-hat.png" alt="Red Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-emoji-angry"></i> Red Hat</p>
+                <p>Hackers que combatem Black Hats com métodos agressivos, muitas vezes ilegais. São como justiceiros digitais.</p>
+              </div>
             </div>
-
-            <!-- Blue Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-primary shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary"><i class="bi bi-person-fill"></i> Blue Hat</h5>
-                        <p class="card-text">Testadores externos ou novatos que usam ferramentas prontas. Podem atuar de
-                            forma ética ou irresponsável.</p>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Blue Hat -->
+          <div class="flip-card border-blue">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/blue-hat.png" alt="Blue Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-person-fill"></i> Blue Hat</p>
+                <p>Testadores externos ou novatos que usam ferramentas prontas. Podem atuar de forma ética ou irresponsável.</p>
+              </div>
             </div>
-
-            <!-- Green Hat -->
-            <div class="col">
-                <div class="card bg-dark text-light h-100 border border-success shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-success"><i class="bi bi-lightbulb"></i> Green Hat</h5>
-                        <p class="card-text">Iniciantes com vontade de aprender. Costumam estudar segurança e
-                            programação com boas intenções.</p>
-                    </div>
-                </div>
+          </div>
+      
+          <!-- Green Hat -->
+          <div class="flip-card border-green">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="imgs/green-hat.png" alt="Green Hat">
+              </div>
+              <div class="flip-card-back">
+                <p class="title"><i class="bi bi-lightbulb"></i> Green Hat</p>
+                <p>Iniciantes com vontade de aprender. Costumam estudar segurança e programação com boas intenções.</p>
+              </div>
             </div>
-
+          </div>
         </div>
-    </div>
+      </div>
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
