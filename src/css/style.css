@@ -12,6 +12,14 @@ body {
   font-family: 'myFont';
 }
 
+h1 {
+  color: #eee;
+  font-family: 'myFont';
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
 .nav-link-custom {
   position: relative;
   display: inline-block;
@@ -133,4 +141,13 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+.txt-paragrafo {
+  color: white;
+  font-size: 30px;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align: justify;
+  padding: 40px;
+  margin: 0;
+  
 }
