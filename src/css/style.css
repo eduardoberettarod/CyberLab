@@ -66,33 +66,68 @@ h1 {
 .navbar-toggler {
   margin-right: 0.5rem;
 }
+
+.title {
+  font-family: 'myFont';
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
 .border-white {
-  border-color: white !important;
-  box-shadow: 0 0 10px white, 0 0 5px white, 0 0 5px white, 0 0 25px white, 0 0 10px white;
+  border-color: #f0f0f0 !important;
+ filter: drop-shadow(0 0 15px #f0f0f0);
+}
+
+.title-white {
+  color: #f0f0f0;
+  text-shadow: 0 0 5px #f0f0f0, 0 0 10px #f0f0f0, 0 0 10px #f0f0f0, 0 0 50px #f0f0f0, 0 0 50px #f0f0f0;
 }
 
 .border-black {
-  border-color: black !important;
-  box-shadow: 0 0 10px black, 0 0 5px black, 0 0 5px black, 0 0 25px black, 0 0 10px black;
+  border-color: #2e2e2e !important;
+  filter: drop-shadow(0 0 15px #2e2e2e);
 }
 
+.title-black {
+  color: #2e2e2e;
+  text-shadow: 0 0 5px #2e2e2e, 0 0 10px #2e2e2e, 0 0 10px #2e2e2e, 0 0 50px #2e2e2e, 0 0 50px #2e2e2e;
+}
 .border-grey{
-  border-color: grey !important;
-  box-shadow: 0 0 10px grey, 0 0 5px grey, 0 0 5px grey, 0 0 25px grey, 0 0 10px grey;
+  border-color: #a3a3a3 !important;
+  filter: drop-shadow(0 0 15px #a3a3a3);
+}
+
+title-grey{
+  color: #a3a3a3;
+  text-shadow: 0 0 5px #a3a3a3, 0 0 10px #a3a3a3, 0 0 10px #a3a3a3, 0 0 50px #a3a3a3, 0 0 50px #a3a3a3;
 }
 
 .border-red{
-  border-color: red !important;
-  box-shadow: 0 0 10px red, 0 0 5px red, 0 0 5px red, 0 0 25px red, 0 0 10px red;
+  border-color: #b23939 !important;
+  filter: drop-shadow(0 0 15px #b23939);
 }
+.title-red{
+  color: #b23939;
+  text-shadow: 0 0 5px #b23939, 0 0 10px #b23939, 0 0 10px #b23939, 0 0 50px #b23939, 0 0 50px #b23939;
+}
+
 .border-blue{
-  border-color: blue !important;
-  box-shadow: 0 0 10px blue, 0 0 5px blue, 0 0 5px blue, 0 0 25px blue, 0 0 10px blue;
+  border-color: #4c83ba !important;
+  filter: drop-shadow(0 0 15px #4c83ba);
+}
+.title-blue{
+  color: #4c83ba;
+  text-shadow: 0 0 5px #4c83ba, 0 0 10px #4c83ba, 0 0 10px #4c83ba, 0 0 50px #4c83ba, 0 0 50px #4c83ba;
 }
 
 .border-green{
-  border-color: green !important;
-  box-shadow: 0 0 10px green, 0 0 5px green, 0 0 5px green, 0 0 25px green, 0 0 10px green;
+  border-color: #439961 !important;
+  filter: drop-shadow(0 0 15px #439961);
+}
+.title-green{
+  color: #439961;
+  text-shadow: 0 0 5px #439961, 0 0 10px #439961, 0 0 10px #439961, 0 0 50px #439961, 0 0 50px #439961;
 }
 
 /* Cards Responsivos e Flip */
