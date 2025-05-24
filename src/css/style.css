@@ -1,5 +1,9 @@
 body {
-  background-color: #333;
+background-image: url(../imgs/fundo2.jpg);
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 @font-face {
@@ -98,7 +102,7 @@ h1 {
   filter: drop-shadow(0 0 15px #a3a3a3);
 }
 
-title-grey{
+.title-grey{
   color: #a3a3a3;
   text-shadow: 0 0 5px #a3a3a3, 0 0 10px #a3a3a3, 0 0 10px #a3a3a3, 0 0 50px #a3a3a3, 0 0 50px #a3a3a3;
 }
@@ -196,9 +200,27 @@ title-grey{
 .txt-paragrafo {
   color: white;
   font-size: 30px;
-  font-family:Arial, Helvetica, sans-serif;
-  text-align: justify;
-  padding: 40px;
-  margin: 0;
-  
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgba(0,0,0,0.3);
+  margin: 20px auto;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  border-radius: 24px;
+}
+
+.card {
+  background: rgba(0,0,0,0.3);
+  margin: 20px auto;
+  width: 30%;
+  height: 80px; /* Altura fixa menor */
+  max-width: 80%;
+  padding: 0.5rem 1rem; /* Padding vertical reduzido */
+  text-align: center;
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse */
 }
