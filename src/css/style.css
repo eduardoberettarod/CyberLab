@@ -50,6 +50,22 @@ h1 {
   text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 10px cyan, 0 0 100px cyan, 0 0 100px cyan;
 }
 
+.perfil-icon {
+  max-width: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.perfil-container {
+  margin-right: 1rem;
+}
+.navbar-brand {
+  margin-left: 0.5rem;
+}
+
+.navbar-toggler {
+  margin-right: 0.5rem;
+}
 .border-white {
   border-color: white !important;
   box-shadow: 0 0 10px white, 0 0 5px white, 0 0 5px white, 0 0 25px white, 0 0 10px white;
