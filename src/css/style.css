@@ -294,7 +294,37 @@ h1 {
     overflow: hidden;
     cursor: pointer;
 }
+@media (max-width: 767px) {
+  .olho {
+    width: 90px;
+    height: 90px;
+    margin-left: 1rem;
+  }
+  .pupila {
+    width: 30px;
+    height: 30px;
+  }
+  .retina {
+    width: 14px;
+    height: 14px;
+  }
+}
 
+@media (max-width: 575px) {
+  .olho {
+    width: 60px;
+    height: 60px;
+    margin-left: 0.5rem;
+  }
+  .pupila {
+    width: 10px;
+    height: 10px;
+  }
+  .retina {
+    width: 4px;
+    height: 4px;
+  }
+}
 /* Animação de tremor */
 @keyframes tremer {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
