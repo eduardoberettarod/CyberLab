@@ -2,8 +2,13 @@ const olho = document.querySelector('.olho');
 const retina = olho.querySelector('.retina');
 const pupila = olho.querySelector('.pupila');
 
+<<<<<<< Updated upstream
 const maxMoveRetina = 5;
 const maxMovePupila = 20;
+=======
+const maxMoveRetina = 7;  // quanto a retina pode se mover do centro do olho
+const maxMovePupila = 30;   // quanto a pupila pode se mover do centro do olho
+>>>>>>> Stashed changes
 
 // Movimento retina e pupila seguindo o mouse, com limites diferentes
 window.addEventListener('mousemove', e => {
@@ -22,6 +27,10 @@ window.addEventListener('mousemove', e => {
     deltaY = deltaY * ratio;
   }
 
+<<<<<<< Updated upstream
+=======
+  // Move retina livremente dentro do limite maior
+>>>>>>> Stashed changes
   retina.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
   // Agora limita movimento pupila (menor)
@@ -52,6 +61,7 @@ function piscar() {
   olho.classList.add('piscando');
   setTimeout(() => {
     olho.classList.remove('piscando');
+<<<<<<< Updated upstream
   }, 300);
 }
 setInterval(piscar, 4000);
@@ -124,3 +134,10 @@ document.addEventListener('mouseup', function() {
   olho.classList.remove('arrastando'); // Remove classe do cursor grabbing
   document.body.style.userSelect = '';
 });
+=======
+  }, 300); // duração do piscar (mesmo tempo da animação no CSS)
+}
+
+// Começa o piscar automático repetindo a cada 4s
+setInterval(piscar, 4000);
+>>>>>>> Stashed changes
