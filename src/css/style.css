@@ -1,5 +1,5 @@
 body {
-  background-image: url(../imgs/fundo2.jpg);
+  background-color: #333;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -15,7 +15,17 @@ body {
     color: #eee;
     font-family: 'myFont';
   }
-  
+  .txt-tittle {
+    color: #eee;
+    font-family: 'myFont';
+    font-size: 2.5rem;
+    text-align: center;
+    width: 100%;
+    z-index: 1000;
+    padding: 10% 0;
+    padding-left: 10%;
+    padding-right: 10%;  
+  }
   h1 {
     color: #eee;
     font-family: 'myFont';
@@ -215,7 +225,6 @@ body {
   .custom-card {
     background: rgba(0,0,0,0.3);
     margin: 20px auto;
-    max-width: 900px;
     padding: 70px;
     text-align: center;
     backdrop-filter: blur(4px);
@@ -444,4 +453,9 @@ body {
   
   .olho.piscando .palpebra {
     transform: scaleY(0.1);
+  }
+  section {
+    place-items: center;
+    align-items: center;
+    min-height: 100vh;
   }

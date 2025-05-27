@@ -5,49 +5,61 @@ const pupila = olho.querySelector('.pupila');
 const maxMoveRetina = 5;
 const maxMovePupila = 20;
 
-// Movimento retina e pupila seguindo o mouse, com limites diferentes
-window.addEventListener('mousemove', e => {
+let mouseX = 0, mouseY = 0;
+let animFrame;
+
+// Atualiza as posições do olho (retina e pupila) com limites
+function atualizarOlho() {
   const rect = olho.getBoundingClientRect();
   const olhoCenterX = rect.left + rect.width / 2;
   const olhoCenterY = rect.top + rect.height / 2;
 
-  let deltaX = e.clientX - olhoCenterX;
-  let deltaY = e.clientY - olhoCenterY;
+  let deltaX = mouseX - olhoCenterX;
+  let deltaY = mouseY - olhoCenterY;
 
-  // Calcula distância e limita para retina
+  // Retina
   const distRetina = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
   if (distRetina > maxMoveRetina) {
     const ratio = maxMoveRetina / distRetina;
-    deltaX = deltaX * ratio;
-    deltaY = deltaY * ratio;
+    deltaX *= ratio;
+    deltaY *= ratio;
   }
-
   retina.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-  // Agora limita movimento pupila (menor)
-  let deltaXPupila = e.clientX - olhoCenterX;
-  let deltaYPupila = e.clientY - olhoCenterY;
-
+  // Pupila
+  let deltaXPupila = mouseX - olhoCenterX;
+  let deltaYPupila = mouseY - olhoCenterY;
   const distPupila = Math.sqrt(deltaXPupila * deltaXPupila + deltaYPupila * deltaYPupila);
   if (distPupila > maxMovePupila) {
     const ratioPupila = maxMovePupila / distPupila;
-    deltaXPupila = deltaXPupila * ratioPupila;
-    deltaYPupila = deltaYPupila * ratioPupila;
+    deltaXPupila *= ratioPupila;
+    deltaYPupila *= ratioPupila;
   }
-
   pupila.style.transform = `translate(${deltaXPupila}px, ${deltaYPupila}px)`;
+}
+
+// Throttle usando requestAnimationFrame
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  if (!animFrame) {
+    animFrame = requestAnimationFrame(() => {
+      atualizarOlho();
+      animFrame = null;
+    });
+  }
 });
 
-// Olho treme quando mouse passa em cima dele
+// Tremor no olho
 olho.addEventListener('mouseenter', () => {
   olho.classList.add('tremendo');
 });
-
 olho.addEventListener('mouseleave', () => {
   olho.classList.remove('tremendo');
 });
 
-// Piscar automático do olho a cada 4 segundos
+// Piscar automático
 function piscar() {
   olho.classList.add('piscando');
   setTimeout(() => {
@@ -56,16 +68,14 @@ function piscar() {
 }
 setInterval(piscar, 4000);
 
-// ----------- Movimento aleatório do olho pela tela -----------
-
+// Movimento aleatório do olho
 olho.style.transition = 'left 1s cubic-bezier(.68,-0.55,.27,1.55), top 1s cubic-bezier(.68,-0.55,.27,1.55)';
 olho.style.position = 'fixed';
 
 let isDragging = false;
 
-// Função para mover o olho aleatoriamente pela tela
 function moverOlhoAleatoriamente() {
-  if (isDragging) return; // Não move se estiver arrastando
+  if (isDragging) return;
 
   const larguraJanela = window.innerWidth;
   const alturaJanela = window.innerHeight;
@@ -82,12 +92,10 @@ function moverOlhoAleatoriamente() {
   olho.style.top = `${top}px`;
 }
 
-// Move o olho a cada 10 segundos
-const intervaloOlho = setInterval(moverOlhoAleatoriamente, 15000);
+setInterval(moverOlhoAleatoriamente, 15000);
 moverOlhoAleatoriamente();
 
-// ----------- Torna o olho arrastável -----------
-
+// Olho arrastável
 let offsetX = 0;
 let offsetY = 0;
 
@@ -95,8 +103,8 @@ olho.addEventListener('mousedown', function(e) {
   isDragging = true;
   offsetX = e.clientX - olho.offsetLeft;
   offsetY = e.clientY - olho.offsetTop;
-  olho.style.transition = 'none'; // Desativa a transição ao arrastar
-  olho.classList.add('arrastando'); // Adiciona classe para cursor grabbing
+  olho.style.transition = 'none';
+  olho.classList.add('arrastando');
   document.body.style.userSelect = 'none';
 });
 
@@ -120,7 +128,7 @@ document.addEventListener('mousemove', function(e) {
 
 document.addEventListener('mouseup', function() {
   isDragging = false;
-  olho.style.transition = 'left 1s cubic-bezier(.68,-0.55,.27,1.55), top 1s cubic-bezier(.68,-0.55,.27,1.55)'; // Ativa novamente a transição
-  olho.classList.remove('arrastando'); // Remove classe do cursor grabbing
+  olho.style.transition = 'left 1s cubic-bezier(.68,-0.55,.27,1.55), top 1s cubic-bezier(.68,-0.55,.27,1.55)';
+  olho.classList.remove('arrastando');
   document.body.style.userSelect = '';
 });
