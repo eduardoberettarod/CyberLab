@@ -1,10 +1,29 @@
 body {
-  background-color: #333;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  }
+  background-color: #111;
+  color: white;
+  min-height: 200vh; /* Conteúdo maior para testar o scroll */
+  position: relative;
+}
+.home-page {
+  position: relative; /* Necessário para o ::before funcionar corretamente */
+  isolation: isolate; /* Garante que o z-index e o backdrop-filter não vaze para fora */
+}
+
+.home-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 200vh;
+  background:
+    radial-gradient(ellipse 10% 50% at 35% 0%, rgba(0, 255, 255, 0.3) 50%, transparent 100%);
+  transform: rotate(0deg);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.7;
+}
   
   @font-face {
     font-family: 'myFont';
@@ -64,6 +83,19 @@ body {
     text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 10px cyan, 0 0 100px cyan, 0 0 100px cyan;
   }
   
+  .navbar-custom {
+    background-color: rgba(0, 0, 0, 0.3); /* fundo preto com transparência */
+    backdrop-filter: blur(8px); /* opcional: desfoca o fundo atrás */
+    -webkit-backdrop-filter: blur(8px); /* suporte Safari */
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* sombra para destacar */
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%); /* centraliza horizontalmente */
+    z-index: 1000; /* garante que fique acima de outros elementos */
+    width: 80%; /* largura responsiva */
+  }
   .perfil-icon {
     max-width: 30px;
     border-radius: 50%;
