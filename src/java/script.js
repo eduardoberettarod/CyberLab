@@ -132,3 +132,17 @@ document.addEventListener('mouseup', function() {
   olho.classList.remove('arrastando');
   document.body.style.userSelect = '';
 });
+document.querySelectorAll('.little-spheres').forEach((el) => {
+  const randomX = Math.random(); // de 0 a 1
+  el.style.setProperty('--rand-x', randomX);
+});
+document.querySelectorAll('.little-spheres').forEach((el) => {
+  const randomX = Math.random();
+  const randomSize = Math.random() * 5 + 5; // 5px a 10px
+  const randomSpeed = Math.random() * 5 + 1; // 1 a 6
+
+  el.style.setProperty('--rand-x', randomX);
+  el.style.width = `${randomSize}px`;
+  el.style.height = `${randomSize}px`;
+  el.style.setProperty('--i', randomSpeed);
+});

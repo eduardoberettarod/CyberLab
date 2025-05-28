@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+    
     <div id="navbar"></div>
     <script>
         //Carregar conteúdo do navbar
@@ -24,7 +24,19 @@
                 console.error('Erro ao carregar o navbar:', error);
             });
     </script>
+    <script>
+        // Carregar conteúdo do efeito para a página inteira
+        fetch('efeito.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML += data;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar a página efeito:', error);
+            });
+    </script>
     <section class="home-page">
+        </div>
         <div class="txt-tittle">
             <h1>Bem vindo ao CyberLab</h1>
             <p style="font-size: 25px;">O CyberLab é um laboratório de cibersegurança que visa ensinar e conscientizar
@@ -174,6 +186,7 @@
                 </table>
             </div>
     </section>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
