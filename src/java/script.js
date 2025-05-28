@@ -1,148 +1,100 @@
-const olho = document.querySelector('.olho');
-const retina = olho.querySelector('.retina');
-const pupila = olho.querySelector('.pupila');
 
-const maxMoveRetina = 5;
-const maxMovePupila = 20;
+//Import the THREE.js library
+import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
+// To allow for the camera to move around the scene
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+// To allow for importing the .gltf file
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
-let mouseX = 0, mouseY = 0;
-let animFrame;
+//Create a Three.JS Scene
+const scene = new THREE.Scene();
+//create a new camera with positions and angles
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// Atualiza as posições do olho (retina e pupila) com limites
-function atualizarOlho() {
-  const rect = olho.getBoundingClientRect();
-  const olhoCenterX = rect.left + rect.width / 2;
-  const olhoCenterY = rect.top + rect.height / 2;
+//Keep track of the mouse position, so we can make the eye move
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
-  let deltaX = mouseX - olhoCenterX;
-  let deltaY = mouseY - olhoCenterY;
+//Keep the 3D object on a global variable so we can access it later
+let object;
 
-  // Retina
-  const distRetina = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-  if (distRetina > maxMoveRetina) {
-    const ratio = maxMoveRetina / distRetina;
-    deltaX *= ratio;
-    deltaY *= ratio;
+//OrbitControls allow the camera to move around the scene
+let controls;
+
+//Set which object to render
+let objToRender = 'eye';
+
+//Instantiate a loader for the .gltf file
+const loader = new GLTFLoader();
+
+//Load the file
+loader.load(
+  `./models/${objToRender}/scene.gltf`,
+  function (gltf) {
+    //If the file is loaded, add it to the scene
+    object = gltf.scene;
+    scene.add(object);
+  },
+  function (xhr) {
+    //While it is loading, log the progress
+    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+  },
+  function (error) {
+    //If there is an error, log it
+    console.error(error);
   }
-  retina.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+);
 
-  // Pupila
-  let deltaXPupila = mouseX - olhoCenterX;
-  let deltaYPupila = mouseY - olhoCenterY;
-  const distPupila = Math.sqrt(deltaXPupila * deltaXPupila + deltaYPupila * deltaYPupila);
-  if (distPupila > maxMovePupila) {
-    const ratioPupila = maxMovePupila / distPupila;
-    deltaXPupila *= ratioPupila;
-    deltaYPupila *= ratioPupila;
-  }
-  pupila.style.transform = `translate(${deltaXPupila}px, ${deltaYPupila}px)`;
+//Instantiate a new renderer and set its size
+const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+//Add the renderer to the DOM
+document.getElementById("container3D").appendChild(renderer.domElement);
+
+//Set how far the camera will be from the 3D model
+camera.position.z = objToRender === "dino" ? 25 : 500;
+
+//Add lights to the scene, so we can actually see the 3D model
+const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
+topLight.position.set(500, 500, 500) //top-left-ish
+topLight.castShadow = true;
+scene.add(topLight);
+
+const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 1);
+scene.add(ambientLight);
+
+//This adds controls to the camera, so we can rotate / zoom it with the mouse
+if (objToRender === "dino") {
+  controls = new OrbitControls(camera, renderer.domElement);
 }
 
-// Throttle usando requestAnimationFrame
-window.addEventListener('mousemove', e => {
+//Render the scene
+function animate() {
+  requestAnimationFrame(animate);
+  //Here we could add some code to update the scene, adding some automatic movement
+
+  //Make the eye move
+  if (object && objToRender === "eye") {
+    //I've played with the constants here until it looked good 
+    object.rotation.y = -3 + mouseX / window.innerWidth * 3;
+    object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
+  }
+  renderer.render(scene, camera);
+}
+
+//Add a listener to the window, so we can resize the window and the camera
+window.addEventListener("resize", function () {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+//add mouse position listener, so we can make the eye move
+document.onmousemove = (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-
-  if (!animFrame) {
-    animFrame = requestAnimationFrame(() => {
-      atualizarOlho();
-      animFrame = null;
-    });
-  }
-});
-
-// Tremor no olho
-olho.addEventListener('mouseenter', () => {
-  olho.classList.add('tremendo');
-});
-olho.addEventListener('mouseleave', () => {
-  olho.classList.remove('tremendo');
-});
-
-// Piscar automático
-function piscar() {
-  olho.classList.add('piscando');
-  setTimeout(() => {
-    olho.classList.remove('piscando');
-  }, 300);
-}
-setInterval(piscar, 4000);
-
-// Movimento aleatório do olho
-olho.style.transition = 'left 1s cubic-bezier(.68,-0.55,.27,1.55), top 1s cubic-bezier(.68,-0.55,.27,1.55)';
-olho.style.position = 'fixed';
-
-let isDragging = false;
-
-function moverOlhoAleatoriamente() {
-  if (isDragging) return;
-
-  const larguraJanela = window.innerWidth;
-  const alturaJanela = window.innerHeight;
-  const olhoLargura = olho.offsetWidth;
-  const olhoAltura = olho.offsetHeight;
-
-  const maxLeft = larguraJanela - olhoLargura;
-  const maxTop = alturaJanela - olhoAltura;
-
-  const left = Math.random() * maxLeft;
-  const top = Math.random() * maxTop;
-
-  olho.style.left = `${left}px`;
-  olho.style.top = `${top}px`;
 }
 
-setInterval(moverOlhoAleatoriamente, 15000);
-moverOlhoAleatoriamente();
-
-// Olho arrastável
-let offsetX = 0;
-let offsetY = 0;
-
-olho.addEventListener('mousedown', function(e) {
-  isDragging = true;
-  offsetX = e.clientX - olho.offsetLeft;
-  offsetY = e.clientY - olho.offsetTop;
-  olho.style.transition = 'none';
-  olho.classList.add('arrastando');
-  document.body.style.userSelect = 'none';
-});
-
-document.addEventListener('mousemove', function(e) {
-  if (isDragging) {
-    const larguraJanela = window.innerWidth;
-    const alturaJanela = window.innerHeight;
-    const olhoLargura = olho.offsetWidth;
-    const olhoAltura = olho.offsetHeight;
-
-    let left = e.clientX - offsetX;
-    let top = e.clientY - offsetY;
-
-    left = Math.max(0, Math.min(left, larguraJanela - olhoLargura));
-    top = Math.max(0, Math.min(top, alturaJanela - olhoAltura));
-
-    olho.style.left = `${left}px`;
-    olho.style.top = `${top}px`;
-  }
-});
-
-document.addEventListener('mouseup', function() {
-  isDragging = false;
-  olho.style.transition = 'left 1s cubic-bezier(.68,-0.55,.27,1.55), top 1s cubic-bezier(.68,-0.55,.27,1.55)';
-  olho.classList.remove('arrastando');
-  document.body.style.userSelect = '';
-});
-document.querySelectorAll('.little-spheres').forEach((el) => {
-  const randomX = Math.random(); // de 0 a 1
-  el.style.setProperty('--rand-x', randomX);
-});
-document.querySelectorAll('.little-spheres').forEach((el) => {
-  const randomX = Math.random();
-  const randomSize = Math.random() * 5 + 5; // 5px a 10px
-  const randomSpeed = Math.random() * 5 + 1; // 1 a 6
-
-  el.style.setProperty('--rand-x', randomX);
-  el.style.width = `${randomSize}px`;
-  el.style.height = `${randomSize}px`;
-  el.style.setProperty('--i', randomSpeed);
-});
+//Start the 3D rendering
+animate();

@@ -1,10 +1,18 @@
 body {
-  background-color: #111;
+  background-color: #111111;
   color: white;
   min-height: 200vh; /* Conteúdo maior para testar o scroll */
   position: relative;
+   overflow-x: hidden; /* Adicione esta linha */
 }
 .home-page {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  justify-content: flex-start; /* Alinha à esquerda */
+  height: 100vh; /* Para ocupar a altura total da tela */
+  padding-left: 5vw; /* Ajuste de margem esquerda opcional */
+  padding-right: 5vw; /* Opcional, para evitar encostar muito */
+  box-sizing: border-box; /* Para o padding não somar no tamanho */
   position: relative; /* Necessário para o ::before funcionar corretamente */
   isolation: isolate; /* Garante que o z-index e o backdrop-filter não vaze para fora */
 }
@@ -14,46 +22,40 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background:
-    radial-gradient(ellipse 10% 50% at 35% 0%, rgba(0, 255, 255, 0.3) 50%, transparent 100%);
-  transform: rotate(0deg);
+    radial-gradient(ellipse 5% 35% at 65% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%),
+    radial-gradient(ellipse 5% 35% at 75% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%);
+  pointer-events: none;
+  z-index: -2;
+  filter: blur(30px);
+  opacity: 0.7;
+}
+.home-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+ background:
+  conic-gradient(
+    from 90deg,  /* Base apontada para baixo */
+    transparent 0deg 75deg,
+    rgba(0, 255, 255, 0.377) 75deg 105deg,
+    transparent 105deg 360deg
+  );
+  background-repeat: no-repeat;
+  background-position: 117.5% 390%;
+  background-size: 70vw 120vh;
   pointer-events: none;
   z-index: -1;
-  filter: blur(80px);
+  filter: blur(20px);
   opacity: 0.7;
 }
 
-.container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden; /* Impede o scroll */
-  display: flex;
-}
-.little-spheres {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: cyan;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 15px cyan);
-  animation: anima linear infinite;
-  animation-duration: calc(300s / var(--i));
-  top: 100vh; /* Começa embaixo */
-  left: calc(var(--rand-x) * 100%);
-}
 
-.spheres-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none; /* opcional, evita interações */
-  overflow: hidden; /* Garante que nada saia da tela */
-  z-index: 0;
-}
 
 @keyframes anima {
   0% {
@@ -68,6 +70,13 @@ body {
     src: url('fonts/Orbitron-VariableFont_wght.ttf') format('opentype');
   }
   
+  #container3D canvas{
+    width: 100vw !important;
+    height: 100vh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .txt {
     color: #eee;
     font-family: 'myFont';
@@ -76,13 +85,18 @@ body {
     color: #eee;
     font-family: 'myFont';
     font-size: 2.5rem;
-    text-align: center;
-    width: 100%;
-    z-index: 1000;
-    padding: 10% 0;
-    padding-left: 10%;
-    padding-right: 10%;  
-  }
+    max-width: 900px;
+    }
+    .tittle-home {
+    color: cyan;
+    font-family: 'myFont';
+    font-size: 4rem;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+    0 0 5px rgba(0, 255, 255, 0.5),
+    0 0 5px rgba(0, 255, 255, 0.5),
+    0 0 50px rgba(0, 255, 255, 0.5),
+    0 0 50px rgba(0, 255, 255, 0.5);
+    }
   h1 {
     color: #eee;
     font-family: 'myFont';
