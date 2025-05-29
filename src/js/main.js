@@ -1,99 +1,117 @@
-//Import the THREE.js library
+//Importe a biblioteca THREE.js
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-// To allow for the camera to move around the scene
+// Para permitir que a câmera se mova ao redor da cena
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
-// To allow for importing the .gltf file
+// Para permitir a importação do arquivo .gltf
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
-//Create a Three.JS Scene
+//Crie uma cena do Three.JS
 const scene = new THREE.Scene();
-//create a new camera with positions and angles
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+//Crie uma nova câmera com posições e ângulos
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-//Keep track of the mouse position, so we can make the eye move
+// Função para atualizar escala e posição da câmera
+function updateObjectScale() {
+  if (!object) return; // Garante que o objeto esteja carregado
+  if (window.innerWidth < 600) {
+    object.scale.set(0.5, 0.5, 0.5);
+    camera.position.z = 300;
+  } else {
+    object.scale.set(1, 1, 1);
+    camera.position.z = 500;
+  }
+}
+
+//Acompanhe a posição do mouse, para que possamos fazer o olho se mover
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 
-//Keep the 3D object on a global variable so we can access it later
+//Mantenha o objeto 3D em uma variável global para que possamos acessá-lo mais tarde
 let object;
 
-//OrbitControls allow the camera to move around the scene
+//OrbitControls permite que a câmera se mova ao redor da cena
 let controls;
 
-//Set which object to render
+//Defina qual objeto renderizar
 let objToRender = 'eye';
 
-//Instantiate a loader for the .gltf file
+//Instancie um carregador para o arquivo .gltf
 const loader = new GLTFLoader();
 
-//Load the file
+//Carregue o arquivo
 loader.load(
   `./models/${objToRender}/scene.gltf`,
   function (gltf) {
-    //If the file is loaded, add it to the scene
+    //Se o arquivo for carregado, adicione-o à cena
     object = gltf.scene;
+    object.position.set(470, 70, -100);
     scene.add(object);
+    
+    // Chama a função para ajustar a escala inicial
+    updateObjectScale();
   },
   function (xhr) {
-    //While it is loading, log the progress
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    //Enquanto estiver carregando, registre o progresso
+    console.log((xhr.loaded / xhr.total * 100) + '% carregado');
   },
   function (error) {
-    //If there is an error, log it
+    //Se houver um erro, registre-o
     console.error(error);
   }
 );
 
-//Instantiate a new renderer and set its size
-const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
+//Instancie um novo renderizador e defina seu tamanho
+const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true permite o fundo transparente
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-//Add the renderer to the DOM
+//Adicione o renderizador ao DOM
 document.getElementById("container3D").appendChild(renderer.domElement);
 
-//Set how far the camera will be from the 3D model
+//Defina quão longe a câmera estará do modelo 3D
 camera.position.z = objToRender === "dino" ? 25 : 500;
 
-//Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
-topLight.position.set(500, 500, 500) //top-left-ish
+//Adicione luzes à cena, para que possamos realmente ver o modelo 3D
+const topLight = new THREE.DirectionalLight(0xffffff, 1); // (cor, intensidade)
+topLight.position.set(500, 500, 500) //topo-esquerda-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
 const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 1);
 scene.add(ambientLight);
 
-//This adds controls to the camera, so we can rotate / zoom it with the mouse
+//Isso adiciona controles à câmera, para que possamos rotacionar / dar zoom com o mouse
 if (objToRender === "dino") {
   controls = new OrbitControls(camera, renderer.domElement);
 }
 
-//Render the scene
+//Renderize a cena
 function animate() {
   requestAnimationFrame(animate);
-  //Here we could add some code to update the scene, adding some automatic movement
 
-  //Make the eye move
+  //Faça o olho se mover
   if (object && objToRender === "eye") {
-    //I've played with the constants here until it looked good 
     object.rotation.y = -3 + mouseX / window.innerWidth * 3;
     object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
   }
+
   renderer.render(scene, camera);
 }
 
-//Add a listener to the window, so we can resize the window and the camera
+//Adicione um ouvinte à janela, para que possamos redimensionar a janela e a câmera
 window.addEventListener("resize", function () {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+
+  // Chama a função para atualizar a escala
+  updateObjectScale();
 });
 
-//add mouse position listener, so we can make the eye move
+//Adicione um ouvinte de posição do mouse, para que possamos fazer o olho se mover
 document.onmousemove = (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 }
 
-//Start the 3D rendering
+//Inicie a renderização 3D
 animate();

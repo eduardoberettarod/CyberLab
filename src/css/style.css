@@ -1,5 +1,5 @@
 body {
-  background-color: #111111;
+  background-color: rgb(20, 27, 27);
   color: white;
   min-height: 200vh; /* Conteúdo maior para testar o scroll */
   position: relative;
@@ -39,13 +39,6 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
- background:
-  conic-gradient(
-    from 90deg,  /* Base apontada para baixo */
-    transparent 0deg 75deg,
-    rgba(0, 255, 255, 0.377) 75deg 105deg,
-    transparent 105deg 360deg
-  );
   background-repeat: no-repeat;
   background-position: 117.5% 390%;
   background-size: 70vw 120vh;
@@ -54,7 +47,6 @@ body {
   filter: blur(20px);
   opacity: 0.7;
 }
-
 
 
 @keyframes anima {
@@ -81,29 +73,144 @@ body {
     color: #eee;
     font-family: 'myFont';
   }
-  .txt-tittle {
+  .txt-sobre {
     color: #eee;
     font-family: 'myFont';
-    font-size: 2.5rem;
-    max-width: 900px;
-    }
-    .tittle-home {
-    color: cyan;
+    text-align: center; margin-bottom: clamp(2rem, 5vw + 1rem, 3rem);
+  }
+  .txt-sobre h2 {
+    color: #eee;
     font-family: 'myFont';
-    font-size: 4rem;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+    text-align: center;
+    font-size: clamp(2rem, 5vw + 1rem, 3rem);
+  }
+  .txt-sobre h2 {
+    color: #eee;
+    font-family: 'myFont';
+    text-align: center;
+    font-size: clamp(2rem, 5vw + 1rem, 3rem);
+    text-align: center;
+  }
+  .txt-tittle {
+    color: #eee;
+    font-family: 'myFont', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 1rem;
+    margin-bottom: clamp(2rem, 5vw + 1rem, 3rem);
+  }
+  
+  .txt-tittle h1 {
+    font-size: clamp(2.5rem, 5vw + 2rem, 4.5rem);
+    line-height: 1.2;
+    margin: 0.5rem 0;
+    position: absolute;
+    top: clamp(20%, 25vh, 30%);
+    left: clamp(2rem, 5vw, 5rem); /* margem à esquerda */
+    transform: none;
+    text-align: left;
+  }
+  .a-home {
+    text-decoration: none;
+    color: #eee;
+    font-family: 'myFont', sans-serif;
+    font-size: clamp(0.7rem, 0.9vw + 0.4rem, 1rem);
+    background-color: #111;
+    padding: clamp(0.3rem, 0.7vw, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
+    max-width: clamp(180px, 50vw, 280px);
+    border-radius: 50px;
+    border: 2px solid cyan;
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.4rem, 1vw, 0.8rem);
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .a-home .text {
+    flex-grow: 1;
+  }
+  
+  .a-home .circle {
+    background-color: cyan;
+    width: clamp(1.2rem, 2.5vw, 1.6rem);
+    height: clamp(1.2rem, 2.5vw, 1.6rem);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    flex-shrink: 0;
+    transition: background-color 0.3s;
+  }
+  
+  .a-home .arrow {
+    font-weight: bold;
+    transform: translateY(-1px); /* pequena correção visual */
+  }
+  
+  .a-home:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-color: cyan;
+  }
+  
+  .a-home:hover .circle {
+    background-color: #00ffff;
+  }
+
+  hr{
+    color: #eee;
+    position: absolute;
+    bottom: 30%; /* Posiciona o parágrafo no final da seção */
+    left: 0;
+    right: 60%;
+    margin: 0 auto;
+    text-align: center; /* Opcional: centraliza o texto horizontalmente */
+    width: 100%;
+  }
+  .txt-tittle p {
+    font-size: clamp(0.5rem, 1.4vw + 0.1rem, 0.9rem);
+    line-height: 1.6;
+    margin-top: 1rem;
+    text-align: left;
+    max-width: clamp(20rem, 30vw + 1rem, 40rem);
+    position: absolute;
+    bottom: 10%; /* Posiciona o parágrafo no final da seção */
+    left: 0;
+    right: 30%;
+    margin: 0 auto;
+    text-align: left; /* Opcional: centraliza o texto horizontalmente */
+}
+  
+  section.home-page {
+    position: relative; /* Define a seção como referência para posicionamento */
+    height: 100vh; /* Garante que a seção ocupe a altura total da janela */
+}
+
+.tittle-home {
+  color: cyan;
+  text-align: left;
+  font-family: 'myFont', sans-serif;
+  font-size: clamp(2.5rem, 5vw + 1.5rem, 4.5rem);
+  text-shadow:
+    0 0 5px rgba(0, 255, 255, 0.5),
     0 0 5px rgba(0, 255, 255, 0.5),
     0 0 5px rgba(0, 255, 255, 0.5),
     0 0 50px rgba(0, 255, 255, 0.5),
     0 0 50px rgba(0, 255, 255, 0.5);
-    }
-  h1 {
-    color: #eee;
-    font-family: 'myFont';
-    text-align: center;
-    font-size: 3rem;
-    margin-top: 20px;
-  }
+  position: absolute;
+  top: clamp(35%, 45vh, 50%);
+  left: clamp(11rem, 14vw, 14rem); /* um pouco mais à direita */
+  transform: none;
+  white-space: nowrap;
+}
   
   .nav-link-custom {
     position: relative;
@@ -136,8 +243,8 @@ body {
   }
   
   .navbar-custom {
-    background-color: rgba(0, 0, 0, 0.3); /* fundo preto com transparência */
-    backdrop-filter: blur(8px); /* opcional: desfoca o fundo atrás */
+    background-color: rgba(0, 0, 0, 0.1); /* fundo preto com transparência */
+    backdrop-filter: blur(5px); /* opcional: desfoca o fundo atrás */
     -webkit-backdrop-filter: blur(8px); /* suporte Safari */
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* sombra para destacar */
@@ -146,7 +253,7 @@ body {
     left: 50%;
     transform: translateX(-50%); /* centraliza horizontalmente */
     z-index: 1000; /* garante que fique acima de outros elementos */
-    width: 80%; /* largura responsiva */
+    width: 70%; /* largura responsiva */
   }
   .perfil-icon {
     max-width: 30px;
@@ -316,6 +423,25 @@ body {
     overflow: hidden;
     margin-bottom: auto;
     
+  }
+  .card-sobre {
+    background: rgba(0, 255, 255, 0.3);
+    margin: 20px auto;
+    margin-top: 30px;
+    padding: 60px;
+    backdrop-filter: blur(4px);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: auto;
+  }
+  .card-sobre-ep {
+    background: rgba(0, 255, 255, 0.3);
+    margin: 20px auto;
+    padding: 60px;
+    backdrop-filter: blur(4px);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: auto;
   }
   /* Responsividade dos flip-cards */
   @media (max-width: 991px) {
