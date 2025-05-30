@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(20, 27, 27);
+  background-color: rgb(15, 19, 19);
   color: white;
   min-height: 200vh; /* Conteúdo maior para testar o scroll */
   position: relative;
@@ -25,8 +25,11 @@ body {
   width: 100%;
   height: 100vh;
   background:
-    radial-gradient(ellipse 5% 35% at 65% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%),
-    radial-gradient(ellipse 5% 35% at 75% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%);
+    radial-gradient(ellipse 10% 35% at 55% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%),
+    radial-gradient(ellipse 10% 35% at 80% 0%, rgba(0, 255, 255, 0.4) 30%, transparent 100%),
+    radial-gradient(ellipse 10% 50% at 67.5% 0%, rgba(0, 255, 255, 0.8) 40%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 50% 40%, rgba(0, 255, 255, 0.2) 10%, transparent 70%),
+    radial-gradient(ellipse 20% 20% at 0% 100%, rgba(0, 255, 255, 0.3) 40%, transparent 100%);
   pointer-events: none;
   z-index: -2;
   filter: blur(30px);
@@ -47,8 +50,97 @@ body {
   filter: blur(20px);
   opacity: 0.7;
 }
+.txt-simulador-black{
+  color: black;
+  font-family: 'myFont', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
+}
+.txt-simulador-white{
+  color: white;
+  font-family: 'myFont', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
+}
+.simulador-item {
+  gap: 1rem; /* Espaço entre chapéu e texto */
+}
 
+.black-hat, .white-hat {
+  transition: transform 0.5s ease;
+  transform-origin: bottom center;
+  /* mantenha o width/height que já tem */
+}
+.black-hat {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  margin: 100px auto;
+  transition: transform 0.5s ease; /* Suaviza o movimento */
+  transform-origin: bottom center; /* Faz o chapéu girar a partir da base */
+}
 
+.black-crown {
+  width: 120px;
+  height: 60px;
+  background-color: #2e2e2e;
+  border-radius: 60px 60px 0px 0px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.black-brim {
+  width: 200px;
+  height: 20px;
+  background-color: #2e2e2e;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de reverência */
+.black-hat:hover {
+  transform: rotateZ(25deg);
+}
+.white-hat {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  margin: 100px auto;
+  transition: transform 0.5s ease; /* Suaviza o movimento */
+  transform-origin: bottom center; /* Faz o chapéu girar a partir da base */
+}
+
+.white-crown {
+  width: 120px;
+  height: 60px;
+  background-color: #eee;
+  border-radius: 60px 60px 0px 0px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.white-brim {
+  width: 200px;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de reverência */
+.white-hat:hover {
+  transform: rotateZ(-25deg);
+}
 @keyframes anima {
   0% {
     transform: translateY(100vh) scale(0);
@@ -77,6 +169,14 @@ body {
     color: #eee;
     font-family: 'myFont';
     text-align: center; margin-bottom: clamp(2rem, 5vw + 1rem, 3rem);
+  }
+  .txt-card-sobre{
+    color: #eee;
+    font-family: 'myFont';
+    text-align: center;
+    font-size: clamp(1.2rem, 3vw + 0.5rem, 2rem);
+    margin-bottom: clamp(1rem, 3vw + 0.5rem, 2rem);
+    padding: 0 1rem; /* Adiciona um pouco de espaçamento horizontal */
   }
   .txt-sobre h2 {
     color: #eee;
@@ -422,26 +522,168 @@ body {
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: auto;
-    
+  }
+  .card-simulacoes-black {
+    --glow-color: rgba(200, 200, 200, 0.7); /* cinza clarinho para glow */
+    --glow-spread-color: rgba(255, 255, 255, 0.25);
+    --enhanced-glow-color: #ffffff;
+  
+    position: relative;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), transparent 70%);
+    border: 1.5px solid rgba(200, 200, 200, 0.3);
+    box-shadow: 0 20px 25px rgba(200, 200, 200, 0.15);
+    border-radius: 12px;
+    margin: 20px auto;
+    padding: 25px 30px;
+    max-width: 420px;
+    color: #ddd; /* texto cinza claro */
+    font-family: 'myFont', sans-serif;
+    transition: all 0.35s ease;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+  
+  .card-simulacoes-black:hover {
+    border-color: var(--glow-color);
+    box-shadow:
+      0 0 1.2em 0.3em var(--glow-color),
+      0 0 2.5em 0.7em var(--glow-spread-color),
+      inset 0 0 0.7em 0.3em var(--glow-color);
+    color: #fff; /* texto fica branco no hover */
+    text-shadow: 0 0 0.6em var(--glow-color);
+  }
+
+  .card-simulacoes-white {
+    --glow-color: #ffffff;
+    --glow-spread-color: rgba(255, 255, 255, 0.3);
+    --enhanced-glow-color: #ffffff;
+  
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 70%);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 25px rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    margin: 20px auto;
+    padding: 25px 30px;
+    max-width: 420px;
+    color: #fff;
+    font-family: 'myFont', sans-serif;
+    transition: all 0.35s ease;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+  
+  .card-simulacoes-white:hover {
+    border-color: var(--glow-color);
+    box-shadow:
+      0 0 1.2em 0.3em var(--glow-color),
+      0 0 2.5em 0.7em var(--glow-spread-color),
+      inset 0 0 0.7em 0.3em var(--glow-color);
+    color: var(--glow-color);
+    text-shadow: 0 0 0.6em var(--glow-color);
+  }
+  
+  .card-simulacoes p {
+    font-size: clamp(0.8rem, 1vw + 0.3rem, 1.1rem);
+    line-height: 1.4;
+    text-align: left;
+    margin-bottom: 0;
   }
   .card-sobre {
-    background: rgba(0, 255, 255, 0.3);
-    margin: 20px auto;
-    margin-top: 30px;
-    padding: 60px;
-    backdrop-filter: blur(4px);
-    border-radius: 24px;
+    --glow-color: rgb(176, 252, 255);
+    --glow-spread-color: rgba(123, 251, 255, 0.5);
+    --enhanced-glow-color: rgb(206, 255, 255);
+  
+    position: relative;
+    background: linear-gradient(#fff2, transparent);
+    border: 1px solid rgba(0, 255, 255, 0.2); /* Borda discreta no estado normal */
+    box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 30px;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     margin-bottom: auto;
+    max-width: 400px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .card-sobre:hover {
+    border: 1px solid var(--glow-color);
+    box-shadow: 
+      0 0 1em 0.2em var(--glow-color),
+      0 0 2em 0.5em var(--glow-spread-color),
+      inset 0 0 0.5em 0.2em var(--glow-color);
+    text-shadow: 0 0 0.5em var(--glow-color);
+  }
+  
+  .card-sobre:hover::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: 0.5;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+    pointer-events: none;
+  }
+  
+  .card-sobre-p{
+    padding-bottom: 45px;
+  }
+  .card-sobre p{
+    font-size: clamp(0.6rem, 1vw + 0.2rem, 1rem);
+    text-align: left;
   }
   .card-sobre-ep {
-    background: rgba(0, 255, 255, 0.3);
-    margin: 20px auto;
-    padding: 60px;
-    backdrop-filter: blur(4px);
-    border-radius: 24px;
+    --glow-color: rgb(176, 252, 255);
+    --glow-spread-color: rgba(123, 251, 255, 0.5);
+    --enhanced-glow-color: rgb(206, 255, 255);
+  
+    position: relative;
+    background: linear-gradient(#fff2, transparent);
+    border: 1px solid rgba(0, 255, 255, 0.2); /* borda leve no estado normal */
+    margin: 10px auto;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
     overflow: hidden;
-    margin-bottom: auto;
+    max-width: 400px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .card-sobre-ep:hover {
+    border: 1px solid var(--glow-color);
+    box-shadow: 
+      0 0 1em 0.2em var(--glow-color),
+      0 0 2em 0.5em var(--glow-spread-color),
+      inset 0 0 0.5em 0.2em var(--glow-color);
+    text-shadow: 0 0 0.5em var(--glow-color);
+  }
+  
+  .card-sobre-ep:hover::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: 0.5;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+    pointer-events: none;
   }
   /* Responsividade dos flip-cards */
   @media (max-width: 991px) {
