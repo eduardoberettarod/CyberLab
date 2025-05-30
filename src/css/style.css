@@ -202,7 +202,7 @@ body {
   }
   
   .txt-tittle h1 {
-    font-size: clamp(2.5rem, 5vw + 2rem, 4.5rem);
+    font-size: clamp(3.8rem, 6.8vw + 2.8rem, 5.8rem);
     line-height: 1.2;
     margin: 0.5rem 0;
     position: absolute;
@@ -210,6 +210,23 @@ body {
     left: clamp(2rem, 5vw, 5rem); /* margem à esquerda */
     transform: none;
     text-align: left;
+  }
+  .tittle-home {
+    color: cyan;
+    text-align: left;
+    font-family: 'myFont', sans-serif;
+    font-size: clamp(3.8rem, 6.8vw + 2.8rem, 5.8rem);
+    text-shadow:
+      0 0 5px rgba(0, 255, 255, 0.5),
+      0 0 5px rgba(0, 255, 255, 0.5),
+      0 0 5px rgba(0, 255, 255, 0.5),
+      0 0 50px rgba(0, 255, 255, 0.5),
+      0 0 50px rgba(0, 255, 255, 0.5);
+    position: absolute;
+    top: clamp(35%, 45vh, 50%);
+    left: clamp(11rem, 14vw, 14rem); /* um pouco mais à direita */
+    transform: none;
+    white-space: nowrap;
   }
   .a-home {
     text-decoration: none;
@@ -292,24 +309,6 @@ body {
   section.home-page {
     position: relative; /* Define a seção como referência para posicionamento */
     height: 100vh; /* Garante que a seção ocupe a altura total da janela */
-}
-
-.tittle-home {
-  color: cyan;
-  text-align: left;
-  font-family: 'myFont', sans-serif;
-  font-size: clamp(2.5rem, 5vw + 1.5rem, 4.5rem);
-  text-shadow:
-    0 0 5px rgba(0, 255, 255, 0.5),
-    0 0 5px rgba(0, 255, 255, 0.5),
-    0 0 5px rgba(0, 255, 255, 0.5),
-    0 0 50px rgba(0, 255, 255, 0.5),
-    0 0 50px rgba(0, 255, 255, 0.5);
-  position: absolute;
-  top: clamp(35%, 45vh, 50%);
-  left: clamp(11rem, 14vw, 14rem); /* um pouco mais à direita */
-  transform: none;
-  white-space: nowrap;
 }
   
   .nav-link-custom {
