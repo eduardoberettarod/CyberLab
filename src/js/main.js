@@ -1,6 +1,5 @@
 // Importa a biblioteca THREE.js
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
 // Crie uma cena do Three.JS
@@ -33,7 +32,6 @@ loader.load(
     object.traverse(function(child) {
       if (child.isMesh) {
         child.rotation.set(0, 3.5, 0);
-        child.position.set(0, 0, 0);
       }
     });
     object.position.set(550, 180, -300); // Ajuste conforme necessário
@@ -120,3 +118,34 @@ document.querySelectorAll('.card-sobre, .card-sobre-ep').forEach(card => {
     card.style.setProperty('--mouse-y', `50%`);
   });
 });
+const section = document.getElementById('home');
+  const cursor = section.querySelector('.cursor-personalizado');
+
+  section.addEventListener('mousemove', (e) => {
+    const rect = section.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Move o cursor personalizado dentro da section
+    cursor.style.left = `${x}px`;
+    cursor.style.top = `${y}px`;
+
+    // Cria o rastro na posição do mouse dentro da section
+    const rastro = document.createElement('div');
+    rastro.classList.add('rastro');
+    rastro.style.left = `${x}px`;
+    rastro.style.top = `${y}px`;
+    section.appendChild(rastro);
+
+    rastro.addEventListener('animationend', () => {
+      rastro.remove();
+    });
+  });
+
+  section.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
+  });
+
+  section.addEventListener('mouseenter', () => {
+    cursor.style.display = 'block';
+  });
