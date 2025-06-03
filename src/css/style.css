@@ -744,54 +744,6 @@ body {
     align-items: center;
     min-height: 100vh;
   }
- #home {
-    position: relative;
-    cursor: none; /* esconde cursor padrão */
-    overflow: hidden;
-  }
-
-  .cursor-personalizado {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 1px solid white;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-  }
-
-  .cursor-personalizado::before,
-  .cursor-personalizado::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background: white;
-    top: 50%;
-    left: 0;
-    transform-origin: center;
-  }
-
-  .cursor-personalizado::before {
-    transform: rotate(45deg);
-  }
-
-  .cursor-personalizado::after {
-    transform: rotate(-45deg);
-  }
-
-  .ponto-central {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
 
   html {
     scroll-behavior: smooth; /* Adiciona rolagem suave */
