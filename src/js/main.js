@@ -29,7 +29,7 @@ loader.load(
   `./models/${objToRender}/scene.gltf`,
   function (gltf) {
     object = gltf.scene;
-    object.traverse(function(child) {
+    object.traverse(function (child) {
       if (child.isMesh) {
         child.rotation.set(0, 3.5, 0);
       }
@@ -119,33 +119,176 @@ document.querySelectorAll('.card-sobre, .card-sobre-ep').forEach(card => {
   });
 });
 const section = document.getElementById('home');
-  const cursor = section.querySelector('.cursor-personalizado');
+const cursor = section.querySelector('.cursor-personalizado');
 
-  section.addEventListener('mousemove', (e) => {
-    const rect = section.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+section.addEventListener('mousemove', (e) => {
+  const rect = section.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-    // Move o cursor personalizado dentro da section
-    cursor.style.left = `${x}px`;
-    cursor.style.top = `${y}px`;
+  // Move o cursor personalizado dentro da section
+  cursor.style.left = `${x}px`;
+  cursor.style.top = `${y}px`;
 
-    // Cria o rastro na posição do mouse dentro da section
-    const rastro = document.createElement('div');
-    rastro.classList.add('rastro');
-    rastro.style.left = `${x}px`;
-    rastro.style.top = `${y}px`;
-    section.appendChild(rastro);
+  // Cria o rastro na posição do mouse dentro da section
+  const rastro = document.createElement('div');
+  rastro.classList.add('rastro');
+  rastro.style.left = `${x}px`;
+  rastro.style.top = `${y}px`;
+  section.appendChild(rastro);
 
-    rastro.addEventListener('animationend', () => {
-      rastro.remove();
+  rastro.addEventListener('animationend', () => {
+    rastro.remove();
+  });
+});
+
+section.addEventListener('mouseleave', () => {
+  cursor.style.display = 'none';
+});
+
+section.addEventListener('mouseenter', () => {
+  cursor.style.display = 'block';
+});
+
+//pre-loader
+const loaderContainer = document.querySelector('.loader-container');
+const conteudo = document.getElementById('conteudo');
+
+if (sessionStorage.getItem('visitouCyberLab')) {
+  // Já visitou: mostra conteúdo direto
+  loaderContainer?.remove();
+  conteudo.style.opacity = 1;
+} else {
+  // Primeira visita: mostra loader e inicia animações
+  sessionStorage.setItem('visitouCyberLab', 'true');
+
+  // ✅ Mostra o loader
+  loaderContainer.style.display = 'flex'; // ou block, conforme seu layout
+  setTimeout(() => {
+    loaderContainer.style.opacity = 1;
+  }, 50); // Pequeno atraso para garantir transição
+
+
+  // ----------------------------- LOADER ANIMATION ORIGINAL -----------------------------
+
+  const loaderBar = document.querySelector('.loader-bar');
+  const cadeado = document.querySelector('.cadeado');
+  const loaderTxt = document.querySelector('.loader-cyber');
+  const clickText = document.querySelector('.click-text');
+  const clickText2 = document.querySelector('.click-text2');
+  const conteudo = document.getElementById('conteudo');
+
+  const totalDuration = 3;
+  const expandDuration = 1.7;
+  const antecipacao = 0.5;
+  const fadeOutDuration = 0.6;
+
+  const timeline = gsap.timeline();
+
+  timeline.to(loaderBar, {
+    duration: totalDuration,
+    ease: "linear",
+    css: { '--scaleX': 1 }
+  }, 0);
+
+  timeline.to(loaderBar, {
+    duration: totalDuration,
+    ease: "linear",
+    css: {
+      '--posX': '249vh',
+      '--boxShadow': '0 0 0 4px rgba(8, 228, 228, 0.2), 0 0 0 10px rgba(8, 228, 228, 0.2), 0 0 20px rgba(8, 228, 228, 1), 0 0 40px 5px rgba(8, 228, 228, 1), 0 0 60px 10px rgba(8, 228, 228, 1)',
+      '--scaleX': 1
+    }
+  }, 0);
+
+  timeline.to([loaderBar, loaderTxt], {
+    opacity: 0,
+    pointerEvents: 'none',
+    duration: 1.2,
+    ease: "power1.out"
+  }, totalDuration - antecipacao);
+
+  timeline.set([cadeado, clickText, clickText2], {
+    opacity: 1,
+    pointerEvents: 'auto'
+  }, totalDuration);
+
+
+  cadeado.addEventListener('click', () => {
+    // Ativa o bloqueio
+
+    const som = new Audio('js/intro.wav');
+    som.play();
+
+    gsap.to([clickText, clickText2], {
+      opacity: 0,
+      duration: 0.4,
+      ease: "power1.out"
     });
-  });
 
-  section.addEventListener('mouseleave', () => {
-    cursor.style.display = 'none';
-  });
+    gsap.to(cadeado, {
+      scale: 200,
+      transformOrigin: "50% 65%",
+      pointerEvents: 'none',
+      duration: expandDuration,
+      ease: "power2.in",
+      onComplete: () => {
+        gsap.to(conteudo, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power1.out"
+        });
 
-  section.addEventListener('mouseenter', () => {
-    cursor.style.display = 'block';
-  });
+        gsap.to('.loader-container', {
+          opacity: 0,
+          duration: fadeOutDuration,
+          onComplete: () => {
+            document.querySelector('.loader-container').remove();
+          }
+        });
+      }
+    });
+  })
+}
+//navbar
+const navbar = document.getElementById('navbar-custom');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+//botao e musica ambiente
+const audio = document.getElementById('background-music');
+const btn = document.getElementById('toggle-music-btn');
+const muteLine = document.getElementById('mute-line');
+
+let isPlaying = false;
+
+btn.addEventListener('click', () => {
+  if (!isPlaying) {
+    audio.play();
+    muteLine.classList.remove('active');
+    isPlaying = true;
+  } else {
+    audio.pause();
+    muteLine.classList.add('active');
+    isPlaying = false;
+  }
+});
+
+// Pausar ao sair ou mudar de aba
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && isPlaying) {
+    audio.pause();
+    muteLine.classList.add('active');
+    isPlaying = false;
+  }
+});
+
+window.addEventListener('beforeunload', () => {
+  audio.pause();
+  audio.currentTime = 0;
+});

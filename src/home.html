@@ -11,263 +11,422 @@
 </head>
 
 <body>
-    <div id="navbar"></div>
-    <script>
-        //Carregar conteúdo do navbar
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Erro ao carregar o navbar:', error);
-            });
-    </script>
-    <section id="home" class="home-page">
+
+    <div class="loader-container">
+        <canvas id="burnCanvas"
+            style="position: absolute; top: 0; left: 0; z-index: 999; width: 100%; height: 100%; pointer-events: none;"></canvas>
+
+        <div class="loader-cyber">CYBERLAB</div>
+
+        <div class="loader-bar"></div>
+
+        <svg class="cadeado" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M35 45 V30 A15 15 0 0 1 65 30 V45" fill="none" stroke="#f0f0f0" stroke-width="8"
+                stroke-linecap="round" />
+            <rect x="25" y="40" width="50" height="50" rx="8" fill="#f0f0f0" />
+            <circle cx="50" cy="65" r="7" fill="rgb(15, 19, 19)" />
+        </svg>
+
+        <div class="click-text">CLIQUE PARA ENTRAR</div>
+        <div class="click-text2">CYBERLAB</div>
+    </div>
+    <main id="conteudo">
+        <div id="navbar"></div>
+        <script>
+            //Carregar conteúdo do navbar
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o navbar:', error);
+                });
+        </script>
+        <section id="home" class="home-page">
             <div class="txt-tittle">
-              <h1>
-                Bem vindo ao
-              </h1>
-              <br>
-              <hr>           
+                <h1>
+                    Bem vindo ao
+                </h1>
+                <br>
+                <hr>
                 <p>
                     O CyberLab é um laboratório de cibersegurança que visa ensinar e conscientizar
                     sobre os diferentes tipos de hackers e suas motivações. Aqui, você aprenderá
                     sobre as práticas éticas e ilegais no mundo digital, além de como se proteger
                     contra ameaças cibernéticas.
-                  </p>
-                  <a class="a-home" href="contato.html">
+                </p>
+                <a class="a-home" href="contato.html">
                     <span class="text">Contato</span>
                     <span class="circle">
-                      <span class="arrow">&#8599;</span>
+                        <span class="arrow">&#8599;</span>
                     </span>
-                  </a>
-            </div> <div id="container3D"></div>
+                </a>
+            </div>
+            <div id="container3D"></div>
             <div class="txt-tittle"><span class="tittle-home">CyberLab</span></div>
 
-    </section>            
+        </section>
 
-    <!--
+        <!--
     <div class="olho">
         <div class="pupila">
             <div class="retina"></div>
         </div>
     </div>
     -->
-    <section id="sobre" style="padding-top: 40px;">
-        <div class="txt-sobre" style="margin-top: 90px;">
-            <p><span style="color: cyan;">[</span> Sobre <span style="color: cyan;">]</span></p>
-            <h2 class="txt-sobre">Por Que o CyberLab Existe?</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-            <div class="card-sobre">
-                <p style="font-size: 12px;"><span style="color: cyan;">[</span> [1.0] <span style="color: cyan;">]</span></p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h1 class="txt-card-sobre card-sobre-p" style="text-align: justify;">Missão</h1>
-                <p>Promover o ensino prático de cibersegurança por meio de simulações interativas, tornando o conhecimento acessível a todos.</p>
+        <section id="sobre" style="padding-top: 40px;">
+            <div class="txt-sobre" style="margin-top: 90px;">
+                <p><span style="color: cyan;">[</span> Sobre <span style="color: cyan;">]</span></p>
+                <h2 class="txt-sobre">Por Que o CyberLab Existe?</h2>
             </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-sobre-ep">
-                <p style="font-size: 12px;"><span style="color: cyan;">[</span> [2.0] <span style="color: cyan;">]</span></p>
-                <br>
-                <br>
-                <br>
-                <h1 class="txt-card-sobre" style="text-align: center;">O que você encontra</h1>
-                <p>No CyberLab, você encontra conteúdos práticos, desafios interativos e projetos simulados para aprimorar suas habilidades em cibersegurança. Explore técnicas reais de ataque e defesa, desenvolva soluções seguras e fortaleça sua capacidade de atuar em ambientes digitais complexos.</p>
-            </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-sobre">
-                <p style="font-size: 12px;"><span style="color: cyan;">[</span> [3.0] <span style="color: cyan;">]</span></p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h1 class="txt-card-sobre" style="text-align: justify;">Diferencial</h1>
-                <p>Nosso diferencial está em oferecer uma abordagem prática e acessível, focada na experiência real de defesa e ataque, com ênfase em simulações aplicadas e aprendizado colaborativo.</p>
-            </div>
-            </div>
-        </div>
-    </section>
-    <section id="simuladores" style="padding-top: 40px;">
-        <div class="txt-sobre" style="margin-top: 90px;">
-          <p><span style="color: cyan;">[</span> Simulador <span style="color: cyan;">]</span></p>
-          <h2 class="txt-sobre">Pratique ataques ou defesas em segurança</h2>
-        </div>
-      
-        <div class="container">
-            <div class="row justify-content-center g-5">
-              <div class="col-12 col-md-6 d-flex justify-content-center">
-                <div class="simulador-item d-flex flex-column align-items-center card-simulacoes-black">
-                  <div class="black-hat">
-                    <div class="black-crown"></div>
-                    <div class="black-brim"></div>
-                  </div>
-                  <h1 class="txt-simulador-black">Black Hat</h1>
-                  <p>Pratique técnicas de ataque para identificar vulnerabilidades e entender como invasores exploram sistemas.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-sobre">
+                        <p style="font-size: 12px;"><span style="color: cyan;">[</span> [1.0] <span
+                                style="color: cyan;">]</span></p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h1 class="txt-card-sobre card-sobre-p" style="text-align: justify;">Missão</h1>
+                        <p>Promover o ensino prático de cibersegurança por meio de simulações interativas, tornando o
+                            conhecimento acessível a todos.</p>
+                    </div>
                 </div>
-              </div>
-          
-              <div class="col-12 col-md-6 d-flex justify-content-center">
-                <div class="simulador-item d-flex flex-column align-items-center card-simulacoes-white">
-                  <div class="white-hat">
-                    <div class="white-crown"></div>
-                    <div class="white-brim"></div>
-                  </div>
-                  <h1 class="txt-simulador-white">White Hat</h1>
-                  <p>Treine estratégias de defesa para proteger sistemas contra ameaças e fortalecer a segurança digital.</p>
+                <div class="col-md-4">
+                    <div class="card-sobre-ep">
+                        <p style="font-size: 12px;"><span style="color: cyan;">[</span> [2.0] <span
+                                style="color: cyan;">]</span></p>
+                        <br>
+                        <br>
+                        <br>
+                        <h1 class="txt-card-sobre" style="text-align: center;">O que você encontra</h1>
+                        <p>No CyberLab, você encontra conteúdos práticos, desafios interativos e projetos simulados para
+                            aprimorar suas habilidades em cibersegurança. Explore técnicas reais de ataque e defesa,
+                            desenvolva soluções seguras e fortaleça sua capacidade de atuar em ambientes digitais
+                            complexos.</p>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-4">
+                    <div class="card-sobre">
+                        <p style="font-size: 12px;"><span style="color: cyan;">[</span> [3.0] <span
+                                style="color: cyan;">]</span></p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h1 class="txt-card-sobre" style="text-align: justify;">Diferencial</h1>
+                        <p>Nosso diferencial está em oferecer uma abordagem prática e acessível, focada na experiência
+                            real de defesa e ataque, com ênfase em simulações aplicadas e aprendizado colaborativo.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-      </section>
-      
-    <section id="hacker-info">
-        <div class="custom-card row" style="width: 80%;">
-            <div class="col-md-6">
-                <h2 class="text-center txt" style="font-size: 45px;">O que é um Hacker?</h2><br>
-                <p style="font-size: 20px; color: #eee; text-align: justify;">Um hacker é uma pessoa que explora
-                    sistemas
-                    de computador e redes para descobrir vulnerabilidades, seja para fins éticos ou maliciosos. Os
-                    hackers podem ser classificados em diferentes categorias, dependendo de suas intenções e métodos.
-                </p>
+        </section>
+        <section id="simuladores" style="padding-top: 40px;">
+            <div class="txt-sobre" style="margin-top: 90px;">
+                <p><span style="color: cyan;">[</span> Simulador <span style="color: cyan;">]</span></p>
+                <h2 class="txt-sobre">Pratique ataques ou defesas em segurança</h2>
             </div>
-            <div class="col-md-6">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/_yRvyPmJkgI?si=v3obmw8t4KpQ3D8m"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
-            <div class="w-100 custom-card">
-                <h2 class="text-center my-5 txt" style="font-size: 45px;">Tipo de Hackers: </h2>
-                <table style="margin:auto;">
-                    <tr>
-                        <td class="p-3">
-                            <!-- White Hat -->
-                            <div class="flip-card border-white">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/white-hat.png" alt="White Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-white" style="color: #f0f0f0;"><i
-                                                class="bi bi-shield-lock"></i> White Hat</p>
-                                        <p>Hackers éticos que ajudam empresas a identificar e corrigir falhas de
-                                            segurança.
-                                            Trabalham de forma legal
-                                            e profissional.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="p-3">
-                            <!-- Black Hat -->
-                            <div class="flip-card border-black">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/black-hat.png" alt="Black Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-black" style="color: #111111;"><i
-                                                class="bi bi-exclamation-triangle"></i> Black Hat</p>
-                                        <p>Hackers maliciosos que invadem sistemas para roubo de dados, extorsão e
-                                            destruição. Atuam fora da lei.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="p-3">
-                            <!-- Grey Hat -->
-                            <div class="flip-card border-grey">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/grey-hat.png" alt="Grey Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-grey" style="color: #a2a2a2 ;"><i
-                                                class="bi bi-circle-half"></i> Grey Hat</p>
-                                        <p>Atuam na fronteira entre o legal e o ilegal. Podem invadir sistemas sem
-                                            permissão, mas sem intenção de
-                                            prejudicar.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-3">
-                            <!-- Red Hat -->
-                            <div class="flip-card border-red">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/red-hat.png" alt="Red Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-red" style="color:#c43030" ;><i
-                                                class="bi bi-emoji-angry"></i>
-                                            Red Hat</p>
-                                        <p>Hackers que combatem Black Hats com métodos agressivos, muitas vezes ilegais.
-                                            São
-                                            como justiceiros
-                                            digitais.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="p-3">
-                            <!-- Blue Hat -->
-                            <div class="flip-card border-blue">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/blue-hat.png" alt="Blue Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-blue" style="color:#2f8ae6 ;"><i
-                                                class="bi bi-person-fill"></i> Blue Hat</p>
-                                        <p>Testadores externos ou novatos que usam ferramentas prontas. Podem atuar de
-                                            forma
-                                            ética ou irresponsável.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="p-3">
-                            <!-- Green Hat -->
-                            <div class="flip-card border-green">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <img src="imgs/green-hat.png" alt="Green Hat">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <p class="title title-green" style="color: #36be66;"><i
-                                                class="bi bi-lightbulb"></i>
-                                            Green Hat</p>
-                                        <p>Iniciantes com vontade de aprender. Costumam estudar segurança e programação
-                                            com
-                                            boas intenções.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-    </section>
 
+            <div class="container">
+                <div class="row justify-content-center g-5">
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <div class="simulador-item d-flex flex-column align-items-center card-simulacoes-black">
+                            <div class="black-hat">
+                                <div class="black-crown"></div>
+                                <div class="black-brim"></div>
+                            </div>
+                            <h1 class="txt-simulador-black">Black Hat</h1>
+                            <p>Pratique técnicas de ataque para identificar vulnerabilidades e entender como invasores
+                                exploram sistemas.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <div class="simulador-item d-flex flex-column align-items-center card-simulacoes-white">
+                            <div class="white-hat">
+                                <div class="white-crown"></div>
+                                <div class="white-brim"></div>
+                            </div>
+                            <h1 class="txt-simulador-white">White Hat</h1>
+                            <p>Treine estratégias de defesa para proteger sistemas contra ameaças e fortalecer a
+                                segurança digital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hacker-info">
+            <div class="custom-card row" style="width: 80%;">
+                <div class="col-md-6">
+                    <h2 class="text-center txt" style="font-size: 45px;">O que é um Hacker?</h2><br>
+                    <p style="font-size: 20px; color: #eee; text-align: justify;">Um hacker é uma pessoa que explora
+                        sistemas
+                        de computador e redes para descobrir vulnerabilidades, seja para fins éticos ou maliciosos. Os
+                        hackers podem ser classificados em diferentes categorias, dependendo de suas intenções e
+                        métodos.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_yRvyPmJkgI?si=v3obmw8t4KpQ3D8m"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+                <div class="w-100 custom-card">
+                    <h2 class="text-center my-5 txt" style="font-size: 45px;">Tipo de Hackers: </h2>
+                    <table style="margin:auto;">
+                        <tr>
+                            <td class="p-3">
+                                <!-- White Hat -->
+                                <div class="flip-card border-white">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/white-hat.png" alt="White Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-white" style="color: #f0f0f0;"><i
+                                                    class="bi bi-shield-lock"></i> White Hat</p>
+                                            <p>Hackers éticos que ajudam empresas a identificar e corrigir falhas de
+                                                segurança.
+                                                Trabalham de forma legal
+                                                e profissional.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <!-- Black Hat -->
+                                <div class="flip-card border-black">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/black-hat.png" alt="Black Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-black" style="color: #111111;"><i
+                                                    class="bi bi-exclamation-triangle"></i> Black Hat</p>
+                                            <p>Hackers maliciosos que invadem sistemas para roubo de dados, extorsão e
+                                                destruição. Atuam fora da lei.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <!-- Grey Hat -->
+                                <div class="flip-card border-grey">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/grey-hat.png" alt="Grey Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-grey" style="color: #a2a2a2 ;"><i
+                                                    class="bi bi-circle-half"></i> Grey Hat</p>
+                                            <p>Atuam na fronteira entre o legal e o ilegal. Podem invadir sistemas sem
+                                                permissão, mas sem intenção de
+                                                prejudicar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-3">
+                                <!-- Red Hat -->
+                                <div class="flip-card border-red">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/red-hat.png" alt="Red Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-red" style="color:#c43030" ;><i
+                                                    class="bi bi-emoji-angry"></i>
+                                                Red Hat</p>
+                                            <p>Hackers que combatem Black Hats com métodos agressivos, muitas vezes
+                                                ilegais.
+                                                São
+                                                como justiceiros
+                                                digitais.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <!-- Blue Hat -->
+                                <div class="flip-card border-blue">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/blue-hat.png" alt="Blue Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-blue" style="color:#2f8ae6 ;"><i
+                                                    class="bi bi-person-fill"></i> Blue Hat</p>
+                                            <p>Testadores externos ou novatos que usam ferramentas prontas. Podem atuar
+                                                de
+                                                forma
+                                                ética ou irresponsável.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <!-- Green Hat -->
+                                <div class="flip-card border-green">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="imgs/green-hat.png" alt="Green Hat">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <p class="title title-green" style="color: #36be66;"><i
+                                                    class="bi bi-lightbulb"></i>
+                                                Green Hat</p>
+                                            <p>Iniciantes com vontade de aprender. Costumam estudar segurança e
+                                                programação
+                                                com
+                                                boas intenções.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+        </section>
+<button id="toggle-music-btn" class="btn-music" aria-label="Ativar/Desativar música">
+    <svg id="icon-headphone" class="icon-headphone" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+      <path d="M21 18a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3"/>
+      <path d="M3 18a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H3"/>
+      <line id="mute-line" class="mute-line" x1="2" y1="2" x2="22" y2="22"/>
+    </svg>
+  </button>
+    </main>
+    <footer>
+        <div class="container-effects">
+            <div class="effects">
+                <span style="--i:1"></span>
+                <span style="--i:46"></span>
+                <span style="--i:100"></span>
+                <span style="--i:42"></span>
+                <span style="--i:7"></span>
+                <span style="--i:99"></span>
+                <span style="--i:13"></span>
+                <span style="--i:56"></span>
+                <span style="--i:81"></span>
+                <span style="--i:23"></span>
+                <span style="--i:68"></span>
+                <span style="--i:35"></span>
+                <span style="--i:91"></span>
+                <span style="--i:2"></span>
+                <span style="--i:77"></span>
+                <span style="--i:54"></span>
+                <span style="--i:18"></span>
+                <span style="--i:63"></span>
+                <span style="--i:29"></span>
+                <span style="--i:85"></span>
+                <span style="--i:47"></span>
+                <span style="--i:10"></span>
+                <span style="--i:73"></span>
+                <span style="--i:38"></span>
+                <span style="--i:94"></span>
+                <span style="--i:21"></span>
+                <span style="--i:60"></span>
+                <span style="--i:15"></span>
+                <span style="--i:80"></span>
+                <span style="--i:51"></span>
+                <span style="--i:4"></span>
+                <span style="--i:70"></span>
+                <span style="--i:33"></span>
+                <span style="--i:88"></span>
+                <span style="--i:25"></span>
+                <span style="--i:66"></span>
+                <span style="--i:41"></span>
+                <span style="--i:97"></span>
+                <span style="--i:12"></span>
+                <span style="--i:58"></span>
+                <span style="--i:83"></span>
+                <span style="--i:20"></span>
+                <span style="--i:75"></span>
+                <span style="--i:49"></span>
+                <span style="--i:6"></span>
+                <span style="--i:72"></span>
+                <span style="--i:31"></span>
+                <span style="--i:90"></span>
+                <span style="--i:27"></span>
+                <span style="--i:65"></span>
+                <span style="--i:44"></span>
+                <span style="--i:17"></span>
+                <span style="--i:61"></span>
+                <span style="--i:36"></span>
+                <span style="--i:86"></span>
+                <span style="--i:9"></span>
+                <span style="--i:79"></span>
+                <span style="--i:53"></span>
+                <span style="--i:16"></span>
+                <span style="--i:69"></span>
+                <span style="--i:39"></span>
+                <span style="--i:95"></span>
+                <span style="--i:22"></span>
+                <span style="--i:59"></span>
+                <span style="--i:84"></span>
+                <span style="--i:26"></span>
+                <span style="--i:74"></span>
+                <span style="--i:48"></span>
+                <span style="--i:5"></span>
+                <span style="--i:71"></span>
+                <span style="--i:32"></span>
+                <span style="--i:89"></span>
+                <span style="--i:24"></span>
+                <span style="--i:67"></span>
+                <span style="--i:43"></span>
+                <span style="--i:98"></span>
+                <span style="--i:14"></span>
+                <span style="--i:57"></span>
+                <span style="--i:82"></span>
+                <span style="--i:19"></span>
+                <span style="--i:76"></span>
+                <span style="--i:50"></span>
+                <span style="--i:8"></span>
+                <span style="--i:62"></span>
+                <span style="--i:37"></span>
+                <span style="--i:93"></span>
+                <span style="--i:28"></span>
+                <span style="--i:64"></span>
+                <span style="--i:40"></span>
+                <span style="--i:96"></span>
+                <span style="--i:11"></span>
+                <span style="--i:55"></span>
+                <span style="--i:87"></span>
+                <span style="--i:3"></span>
+                <span style="--i:78"></span>
+                <span style="--i:52"></span>
+                <span style="--i:30"></span>
+                <span style="--i:92"></span>
+                <span style="--i:1"></span>
+                <span style="--i:46"></span>
+                <span style="--i:100"></span>
+
+            </div>
+        </div>
+        <hr style="bottom: 20vh; width: 80%; margin-left: 10%;">
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+    <audio id="background-music" src="js/ambient.wav" loop></audio>
+
     <script type="module" src="js/main.js"></script>
 
 
