@@ -292,3 +292,13 @@ window.addEventListener('beforeunload', () => {
   audio.pause();
   audio.currentTime = 0;
 });
+ // Scroll vertical move o carrossel horizontalmente
+    const carouselContainer = document.querySelector('.carousel-container');
+
+    window.addEventListener('scroll', () => {
+      const offsetTop = carouselContainer.offsetTop;
+      const scrollY = window.scrollY;
+      if (scrollY >= offsetTop && scrollY <= offsetTop + window.innerHeight) {
+        carouselContainer.scrollLeft = scrollY - offsetTop;
+      }
+    });

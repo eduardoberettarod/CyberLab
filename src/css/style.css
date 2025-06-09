@@ -1056,3 +1056,47 @@ html {
       display: block;
       opacity: 1;
     }
+
+    .carousel-container {
+      height: 100vh;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 20px;
+      padding: 0 50px;
+    }
+
+    .card-carrossel {
+      scroll-snap-align: center;
+      width: 300px;
+      height: 400px;
+      background: #222;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .txt-hackers{
+      position: absolute;
+      left: 65vh;
+      width: 25%;
+      text-align: left;
+      font-size: 1rem;
+     margin-top: 30vh;
+     font-family: 'myFont';
+    }
