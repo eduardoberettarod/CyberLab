@@ -1093,10 +1093,32 @@ html {
 
     .txt-hackers{
       position: absolute;
-      left: 65vh;
+      left: 20vh;
       width: 25%;
       text-align: left;
       font-size: 1rem;
      margin-top: 30vh;
      font-family: 'myFont';
+    }
+
+    footer {
+      position: relative; /* Permite que os elementos dentro do footer se movam */
+
+  }
+
+    footer p {
+      position: relative; /* Permite que o elemento se mova dentro do footer */
+      bottom: 10vh;
+      color: #eee;
+      font-family: 'Myfont';
+    }
+    .footer-r{
+      position: relative;
+      left: 72%;
+    }
+
+    .footer-l{
+      position: relative;
+      left: 10%;
+      bottom: 15vh;
     }
