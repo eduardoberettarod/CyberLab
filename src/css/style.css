@@ -177,7 +177,7 @@ body {
 
 @font-face {
   font-family: 'myFont';
-  src: url('fonts/Orbitron-VariableFont_wght.ttf') format('opentype');
+  src: url('Orbitron-VariableFont_wght.ttf') format('opentype');
 }
 
 #container3D canvas {
@@ -1033,6 +1033,7 @@ html {
   transition: background 0.3s ease;
   left: 5vh;
   bottom: 5vh;
+  z-index: 1;
 }
 
 .btn-music:hover {
@@ -1108,12 +1109,14 @@ html {
 footer {
   position: relative;
   overflow: hidden;
+  min-height: 40vh;
+  /* Ajuste conforme necessário */
 }
 
 .footer-page {
+  content: "";
   position: relative;
-  z-index: 1;
-  height: 100vh; /* Ajuste conforme necessário para dar espaço aos efeitos */
+  z-index: -1;
   bottom: -7vh;
 }
 
@@ -1124,19 +1127,17 @@ footer {
   transform: rotateZ(7deg);
   bottom: -5vh;
   left: 70vh;
-  width: 13vh;
-  height: 65vh;
-  background: linear-gradient(
-    to top,
-    rgba(0, 255, 255, 0.5),
-    rgba(0, 255, 255, 0.25),
-    rgba(0, 255, 255, 0.1),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0)
-  );
-  filter: blur(10px);
+  width: 12vh;
+  height: 80vh;
+  background: linear-gradient(to top,
+      rgba(0, 255, 255, 0.5),
+      rgba(0, 255, 255, 0.25),
+      rgba(0, 255, 255, 0.1),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0));
+  filter: blur(20px);
   pointer-events: none;
-  z-index: -1;
+  z-index: -2;
   opacity: 0.7;
 }
 
@@ -1147,18 +1148,16 @@ footer {
   transform: rotateZ(7deg);
   bottom: -5vh;
   left: 66vh;
-  width: 20vh;
+  width: 25vh;
   height: 65vh;
-  background: linear-gradient(
-    to top,
-    rgba(0, 255, 255, 0.3),
-    rgba(0, 255, 255, 0.15),
-    rgba(0, 255, 255, 0.075),
-    rgba(0, 0, 255, 0)
-  );
+  background: linear-gradient(to top,
+      rgba(0, 255, 255, 0.3),
+      rgba(0, 255, 255, 0.15),
+      rgba(0, 255, 255, 0.075),
+      rgba(0, 0, 255, 0));
   pointer-events: none;
-  filter: blur(30px);
-  z-index: -2;
+  filter: blur(70px);
+  z-index: -3;
   opacity: 0.7;
 }
 
@@ -1171,11 +1170,103 @@ footer p {
 
 .footer-r {
   position: relative;
-  left: 72%;
+  left: 80%;
 }
 
 .footer-l {
   position: relative;
   left: 10%;
   bottom: 15vh;
+}
+
+.container-footer {
+  position: absolute;
+  bottom: 30vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 10rem;
+  padding: 1rem;
+  background: transparent;
+  align-items: start;
+  max-width: 1700px;
+  width: 100%;
+}
+
+.left h1 {
+  font-size: 5rem;
+  margin-bottom: 7rem;
+  background: linear-gradient(90deg, #08e4e4, #08e4e490, #08e4e475, #08e4e450, #08e4e425);
+  letter-spacing: 0.5rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-family: 'myFont', sans-serif;
+  font-weight: 600;
+  pointer-events: none;
+  
+}
+
+.left p {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #aaa;
+}
+
+.middle h2,
+.right h2 {
+  color: #eee;
+  font-family: 'myFont', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+
+.middle ul,
+.right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'myFont', sans-serif;
+}
+
+.middle a,
+.right a {
+  font-size: 1.5rem;
+  margin: 0.75rem 0;
+  text-decoration: none;
+  color: #eee;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  font-family: 'myFont', sans-serif;
+}
+
+/* Linha invisível por padrão */
+.middle a::after,
+.right a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #eee; /* Cor da linha */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Quando passar o mouse, a linha entra da esquerda */
+.middle a:hover::after,
+.right a:hover::after {
+  transform: translateX(0%);
+}
+
+.right .block {
+  margin-bottom: 2rem;
+}
+
+main {
+  flex: 1;
 }
