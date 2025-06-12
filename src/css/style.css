@@ -233,7 +233,6 @@ body {
   text-align: left;
   padding: 1rem;
   margin-bottom: clamp(2rem, 5vw + 1rem, 3rem);
-  font-weight: 600;
 }
 
 .txt-tittle h1 {
@@ -265,7 +264,6 @@ body {
   /* um pouco mais à direita */
   transform: none;
   white-space: nowrap;
-  font-weight: 600;
 }
 
 .a-home {
@@ -394,6 +392,54 @@ section.home-page {
 .nav-link-custom:hover {
   color: cyan;
   text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 10px cyan, 0 0 100px cyan, 0 0 100px cyan;
+}
+
+.nav-link-custom-registro {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-family: 'myFont';
+}
+
+.nav-link-custom-registro::after {
+  content: "";
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: cyan;
+  transition: width 0.5s ease, text-shadow 0.5s ease;
+}
+
+.nav-link-custom-registro:hover::after {
+  width: 50%;
+  box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+}
+
+.nav-link-custom-registro:hover {
+  color: cyan;
+  text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 10px cyan, 0 0 100px cyan, 0 0 100px cyan;
+}
+
+.custom-dropdown-icon {
+  margin-left: 8px;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle; /* ou: text-bottom */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 2px cyan);
+  transform: rotate(-90deg);
+}
+
+
+/* Quando o mouse passa: gira a seta e brilha */
+.nav-link-custom-registro:hover .custom-dropdown-icon {
+  transform: rotate(0deg);
+  filter: drop-shadow(0 0 5px cyan) drop-shadow(0 0 15px cyan);
 }
 
 .navbar-custom {
