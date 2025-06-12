@@ -988,7 +988,7 @@ html {
   position: relative;
   width: 100%;
   height: 100vh;
-  z-index: -999;
+  z-index: -3;
 }
 
 .effects {
@@ -1003,7 +1003,7 @@ html {
   background-color: rgb(8, 228, 228);
   margin: 0 10px;
   animation: effect calc(2000s / var(--i)) linear infinite;
-  z-index: -999;
+  z-index: -3;
 }
 
 @keyframes effect {
@@ -1108,7 +1108,7 @@ html {
 
 footer {
   position: relative;
-  overflow: hidden;
+  
   min-height: 40vh;
   /* Ajuste conforme necessário */
 }
@@ -1170,7 +1170,7 @@ footer p {
 
 .footer-r {
   position: relative;
-  left: 80%;
+  left: 73%;
 }
 
 .footer-l {
@@ -1181,12 +1181,12 @@ footer p {
 
 .container-footer {
   position: absolute;
-  bottom: 30vh;
+  bottom: 20vh;
   left: 50%;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
-  gap: 10rem;
+  gap: clamp(2rem, 6vw, 10rem); /* Responsivo */
   padding: 1rem;
   background: transparent;
   align-items: start;
@@ -1195,8 +1195,8 @@ footer p {
 }
 
 .left h1 {
-  font-size: 5rem;
-  margin-bottom: 7rem;
+  font-size: clamp(2rem, 5vw, 5rem); /* Responsivo */
+  margin-bottom: clamp(2rem, 6vw, 7rem);
   background: linear-gradient(90deg, #08e4e4, #08e4e490, #08e4e475, #08e4e450, #08e4e425);
   letter-spacing: 0.5rem;
   -webkit-background-clip: text;
@@ -1206,12 +1206,11 @@ footer p {
   font-family: 'myFont', sans-serif;
   font-weight: 600;
   pointer-events: none;
-  
 }
 
 .left p {
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: clamp(1rem, 2.5vw, 2rem); /* Responsivo */
+  line-height: 1.4;
   color: #aaa;
 }
 
@@ -1219,7 +1218,7 @@ footer p {
 .right h2 {
   color: #eee;
   font-family: 'myFont', sans-serif;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   margin-bottom: 3rem;
 }
 
@@ -1233,7 +1232,7 @@ footer p {
 
 .middle a,
 .right a {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   margin: 0.75rem 0;
   text-decoration: none;
   color: #eee;
@@ -1252,7 +1251,7 @@ footer p {
   left: 0;
   height: 2px;
   width: 100%;
-  background-color: #eee; /* Cor da linha */
+  background-color: #eee;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 }
@@ -1264,9 +1263,49 @@ footer p {
 }
 
 .right .block {
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1rem, 2vw, 2rem);
 }
 
 main {
   flex: 1;
+}
+
+@media (max-width: 900px) {
+  .container-footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    bottom: 10vh;
+  }
+
+  .middle h2,
+  .right h2 {
+    margin-top: 2rem;
+  }
+
+  .middle a,
+  .right a {
+    display: block;
+    margin: 0.5rem auto;
+  }
+}
+@media (min-width: 1024px) {
+  .container-footer {
+    gap: 6rem;
+    padding: 4rem;
+    margin-left: 5rem;
+  }
+
+  .left h1 {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .left p {
+    font-size: 1.6rem;
+  }
+
+  .middle a,
+  .right a {
+    font-size: 1.2rem;
+  }
 }
