@@ -210,6 +210,157 @@ body {
   /* Adiciona um pouco de espaçamento horizontal */
 }
 
+.card-contato {
+  position: absolute;
+  top: 0;
+  border-radius: 24px;
+  margin-top: 20vh;
+  width: 60vh;
+  overflow: hidden;
+  left: 20vh;
+  z-index: 1; /* Garante que o conteúdo fique acima do ::before */
+  background: rgba(35, 45, 45, 0.2);
+  border: 1px solid rgb(35, 45, 45);
+}
+
+.card-contato::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Aplica blur no fundo */
+  z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.card-contato h1 {
+  color: #eee;
+  font-family: 'MyFont';
+  margin-left: 5vh;
+  margin-top: 5vh;
+  font-size: 1.7rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card-contato label {
+  color: #eee;
+  font-family: 'MyFont';
+  margin-left: 5vh;
+  margin-top: 5vh;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+input {
+  background: transparent;
+  border: 1px solid rgb(35, 45, 45);
+  border-radius: 10px;
+  margin-left: 4vh;
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
+
+textarea{
+  background: transparent;
+  border: 1px solid rgb(35, 45, 45);
+  border-radius: 10px;
+  margin-left: 4vh;
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+input{
+  width: 420px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+textarea{
+  width: 420px;
+  margin-top: 10px;
+  max-height: 200px;
+  resize: none;
+}
+
+input::placeholder{
+  position: absolute;
+  color:#aaa;
+  font-family: 'Myfont';
+  font-size: 0.7rem;
+  margin-left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+textarea::placeholder{
+  position: absolute;
+  color:#aaa;
+  font-family: 'Myfont';
+  font-size: 0.7rem;
+  margin-left: 10px;
+  top: 15%;
+  transform: translateY(-50%);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 2px solid rgb(1, 204, 204);
+}
+
+#btn-contato{
+  position: relative;
+  left: 20%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #eee;
+  font-weight: 500;
+  color: #111;
+  font-family: 'Myfont';
+  font-size: 0.8rem;
+  box-shadow: 0 0 10px #040305;
+}
+
+#btn-contato:active{
+  position: relative;
+  left: 7%;
+  transform: translateX(-50%);
+  transform: scale(0.90);
+}
+
+.card-contato-txt{
+  position: absolute;
+  top: 20%;
+  width: 40%;
+  right: 15vh;
+  font-family: 'Myfont';
+  font-size: 2rem;
+}
+.card-contato-txt p{
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+  font-family: 'Myfont';
+  font-size: 0.9rem;
+}
+
+.svg-contato{
+  z-index: -999;
+  width: 102%;
+  height: 100vh;
+}
+
 .txt-sobre h2 {
   color: #eee;
   font-family: 'myFont';
@@ -429,26 +580,27 @@ section.home-page {
   margin-left: 8px;
   width: 20px;
   height: 20px;
-  vertical-align: middle; /* ou: text-bottom */
+  vertical-align: middle;
+  /* ou: text-bottom */
   transition: transform 0.3s ease, filter 0.3s ease;
   filter: drop-shadow(0 0 2px cyan);
   transform: rotate(-90deg);
 }
 
-.dropdown-menu{
+.dropdown-menu {
   background: transparent;
   border: none;
   box-shadow: 0 0 10px 2px cyan, 0 0 20px cyan;
 }
 
-.dropdown-item{
+.dropdown-item {
   color: #eee;
   font-family: 'Myfont';
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   transition: ease-in-out 0.2s;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   background: transparent;
   color: #00ffff;
   filter: drop-shadow(0 0 10px cyan)
@@ -1172,7 +1324,7 @@ html {
 
 footer {
   position: relative;
-  
+
   min-height: 40vh;
   /* Ajuste conforme necessário */
 }
@@ -1250,7 +1402,8 @@ footer p {
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
-  gap: clamp(2rem, 6vw, 10rem); /* Responsivo */
+  gap: clamp(2rem, 6vw, 10rem);
+  /* Responsivo */
   padding: 1rem;
   background: transparent;
   align-items: start;
@@ -1259,7 +1412,8 @@ footer p {
 }
 
 .left h1 {
-  font-size: clamp(2rem, 5vw, 5rem); /* Responsivo */
+  font-size: clamp(2rem, 5vw, 5rem);
+  /* Responsivo */
   margin-bottom: clamp(2rem, 6vw, 7rem);
   background: linear-gradient(90deg, #08e4e4, #08e4e490, #08e4e475, #08e4e450, #08e4e425);
   letter-spacing: 0.5rem;
@@ -1273,7 +1427,8 @@ footer p {
 }
 
 .left p {
-  font-size: clamp(1rem, 2.5vw, 2rem); /* Responsivo */
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  /* Responsivo */
   line-height: 1.4;
   color: #aaa;
 }
@@ -1352,6 +1507,7 @@ main {
     margin: 0.5rem auto;
   }
 }
+
 @media (min-width: 1024px) {
   .container-footer {
     gap: 6rem;
