@@ -336,7 +336,7 @@ input:focus, textarea:focus {
   position: relative;
   left: 7%;
   transform: translateX(-50%);
-  transform: scale(0.90);
+  transform: scale(0.95);
 }
 
 .card-contato-txt{
@@ -355,11 +355,63 @@ input:focus, textarea:focus {
   font-size: 0.9rem;
 }
 
-.svg-contato{
-  z-index: -999;
+.svg-contato-wrapper {
+  position: absolute;
   width: 102%;
   height: 100vh;
+  padding: 0;
+  z-index: -999;
+
+  /* Aplica a máscara SVG */
+  mask: url('linhas.svg');
+  -webkit-mask: url('linhas.svg');
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  overflow: hidden; /* esconde luz fora da área */
 }
+
+.svg-contato {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.svg-contato-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40%; /* largura do feixe */
+  height: 100%;
+  z-index: 20;
+  filter: drop-shadow(0 0 0 10px #00ffcc);
+  background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
+  animation: LUZFECHANDO 5s linear infinite;
+}
+
+@keyframes LUZFECHANDO {
+  0% {
+    transform: translateX(1000%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-10%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+}
+
+
 
 .txt-sobre h2 {
   color: #eee;
@@ -894,14 +946,9 @@ section.home-page {
 }
 
 .card-sobre {
-  --glow-color: rgb(176, 252, 255);
-  --glow-spread-color: rgba(123, 251, 255, 0.5);
-  --enhanced-glow-color: rgb(206, 255, 255);
-
   position: relative;
-  background: linear-gradient(#fff2, transparent);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  /* Borda discreta no estado normal */
+  background: rgba(35, 45, 45, 0.2);
+  border: 1px solid rgb(35, 45, 45);
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin: 30px auto;
@@ -912,30 +959,18 @@ section.home-page {
   margin-bottom: auto;
   max-width: 400px;
   color: white;
-  transition: all 0.3s ease;
+  z-index: 1;
 }
-
-.card-sobre:hover {
-  border: 1px solid var(--glow-color);
-  box-shadow:
-    0 0 1em 0.2em var(--glow-color),
-    0 0 2em 0.5em var(--glow-spread-color),
-    inset 0 0 0.5em 0.2em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
-}
-
-.card-sobre:hover::after {
+ 
+.card-sobre::before { 
   content: "";
   position: absolute;
-  top: 110%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: 0.5;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
-  pointer-events: none;
+  backdrop-filter: blur(5px); /* Aplica blur no fundo */
+  z-index: -1; /* Fica atrás do conteúdo */
 }
 
 .card-sobre-p {
@@ -948,46 +983,29 @@ section.home-page {
 }
 
 .card-sobre-ep {
-  --glow-color: rgb(176, 252, 255);
-  --glow-spread-color: rgba(123, 251, 255, 0.5);
-  --enhanced-glow-color: rgb(206, 255, 255);
-
   position: relative;
-  background: linear-gradient(#fff2, transparent);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  /* borda leve no estado normal */
+  background: rgba(35, 45, 45, 0.2);
+  border: 1px solid rgb(35, 45, 45);
   margin: 10px auto;
   padding: 30px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
   max-width: 400px;
   color: white;
-  transition: all 0.3s ease;
+  z-index: 1;
 }
 
-.card-sobre-ep:hover {
-  border: 1px solid var(--glow-color);
-  box-shadow:
-    0 0 1em 0.2em var(--glow-color),
-    0 0 2em 0.5em var(--glow-spread-color),
-    inset 0 0 0.5em 0.2em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
-}
-
-.card-sobre-ep:hover::after {
+.card-sobre-ep::before { 
   content: "";
   position: absolute;
-  top: 110%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: 0.5;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
-  pointer-events: none;
+  backdrop-filter: blur(5px); /* Aplica blur no fundo */
+  z-index: -1; /* Fica atrás do conteúdo */
 }
 
 /* Responsividade dos flip-cards */
