@@ -385,17 +385,16 @@ input:focus, textarea:focus {
   position: absolute;
   left: 0;
   top: 0;
-  width: 40%; /* largura do feixe */
+  width: 70%; /* largura do feixe */
   height: 100%;
   z-index: 20;
-  filter: drop-shadow(0 0 0 10px #00ffcc);
   background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
-  animation: LUZFECHANDO 5s linear infinite;
+  animation: LUZFECHANDO 7s linear infinite;
 }
 
 @keyframes LUZFECHANDO {
   0% {
-    transform: translateX(1000%);
+    transform: translateX(200%);
     opacity: 0;
   }
   10% {
@@ -410,7 +409,6 @@ input:focus, textarea:focus {
     transform: translateX(-50%);
   }
 }
-
 
 
 .txt-sobre h2 {
@@ -947,7 +945,7 @@ section.home-page {
 
 .card-sobre {
   position: relative;
-  background: rgba(35, 45, 45, 0.2);
+  background: rgba(35, 45, 45, 0.1);
   border: 1px solid rgb(35, 45, 45);
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -969,7 +967,7 @@ section.home-page {
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px); /* Aplica blur no fundo */
+  backdrop-filter: blur(1px); /* Aplica blur no fundo */
   z-index: -1; /* Fica atrás do conteúdo */
 }
 
@@ -984,7 +982,7 @@ section.home-page {
 
 .card-sobre-ep {
   position: relative;
-  background: rgba(35, 45, 45, 0.2);
+  background: rgba(35, 45, 45, 0.1);
   border: 1px solid rgb(35, 45, 45);
   margin: 10px auto;
   padding: 30px;
@@ -1231,12 +1229,12 @@ html {
 }
 
 .effects span {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background-color: rgb(8, 228, 228);
   margin: 0 10px;
-  animation: effect calc(2000s / var(--i)) linear infinite;
+  animation: effect calc(1800s / var(--i)) linear infinite;
   z-index: -3;
 }
 
