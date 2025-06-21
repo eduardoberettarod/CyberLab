@@ -422,77 +422,40 @@ textarea:focus {
 
 .svg-boca-login {
   position: absolute;
-  right: 0;
+  right: 30%;
+  transform: translateX(-50%);
   top: 30vh;
-  width: 100%;
+  width: 20%;
   height: 20%;
   overflow: hidden;
   z-index: -10;
-  mask: url('boca.svg');
-  -webkit-mask: url('boca.svg');
-  mask-position: center;
-  -webkit-mask-position: center;
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  overflow: hidden;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px #00ffcc);
+   transition: opacity 1s ease; /* transição suave de 0.5 segundos */
 }
 
-/* EFEITO DE LUZ ANIMADO */
-.svg-boca-login::before {
-  content: "";
+.svg-olhos-login {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 70%;
-  height: 100%;
-  z-index: 1;
- background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
-animation: LUZFECHANDO 10s linear infinite;
-  pointer-events: none;
-}
-.svg-olhos-login{
-  position: absolute;
-  top: -10vh;
-  right: 0;
-  width: 100%;
+  right: 30%;
+  transform: translateX(-50%);
+  top: 10vh;
+  width: 20%;
   height: 20%;
   overflow: hidden;
   z-index: -10;
-  mask: url('olhos.svg');
-  -webkit-mask: url('olhos.svg');
-  mask-position: center;
-  -webkit-mask-position: center;
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  overflow: hidden;
-}
-
-/* EFEITO DE LUZ ANIMADO */
-.svg-olhos-login::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 70%;
-  height: 100%;
-  z-index: 1;
-   background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
-  pointer-events: none;
-  animation: LUZFECHANDO 10s linear infinite;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px #00ffcc);
+ transition: opacity 1s ease;
 }
 
 #btn-login {
   position: relative;
-  left: 20%;
+  left: 50%;
   transform: translateX(-50%);
   border: none;
-  padding: 15px 40px;
+  padding: 15px 60px;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 30px;
   background-color: #eee;
   font-weight: 500;
@@ -502,6 +465,23 @@ animation: LUZFECHANDO 10s linear infinite;
   box-shadow: 0 0 10px #040305;
 }
 
+#btn-login:hover~.svg-boca-login,
+#btn-login:hover~.svg-olhos-login {
+  opacity: 1;
+}
+
+#a-login {
+  position: relative;
+  left: 33%;
+  transform: translateX(-50%);
+  font-family: 'Myfont';
+  color: #eee;
+}
+
+#a-login:hover {
+  color: #00ffff;
+  filter: drop-shadow(0 0 10px cyan)
+}
 
 #navbar-fixed {
   position: fixed;
@@ -1664,29 +1644,41 @@ main {
 
 .card-login {
   position: relative;
-  justify-content: center;
-  top: 0;
   border-radius: 24px;
   margin-top: 20vh;
   width: 20%;
   overflow: hidden;
-  z-index: 999;
   background: rgba(35, 45, 45, 0.2);
   border: 1px solid rgb(35, 45, 45);
+  padding-bottom: 50px;
+  z-index: 0;
 }
 
-.card-login::before {
-  content: "";
+.borda-animada {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px);
-  /* Aplica blur no fundo */
-  z-index: -1;
-  /* Fica atrás do conteúdo */
+  fill: none;
+  stroke: #00ffcc;
+  filter: drop-shadow(0 0 2px #00ffcc);
+  stroke-width: 0.3;
+  /* Traço duplo com espaço igual entre eles */
+  stroke-dasharray: 60 130 60 136.84;
+  stroke-dashoffset: 0;
+  animation: bordaNeon 10s linear infinite;
+  pointer-events: none;
+  z-index: 10;
 }
+
+@keyframes bordaNeon {
+  to {
+    stroke-dashoffset: -386.84;
+    /* valor total da borda */
+  }
+}
+
 
 .card-login h1 {
   color: #eee;
