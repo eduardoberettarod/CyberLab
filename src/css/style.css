@@ -218,7 +218,8 @@ body {
   width: 60vh;
   overflow: hidden;
   left: 20vh;
-  z-index: 1; /* Garante que o conteúdo fique acima do ::before */
+  z-index: 1;
+  /* Garante que o conteúdo fique acima do ::before */
   background: rgba(35, 45, 45, 0.2);
   border: 1px solid rgb(35, 45, 45);
 }
@@ -230,8 +231,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px); /* Aplica blur no fundo */
-  z-index: -1; /* Fica atrás do conteúdo */
+  backdrop-filter: blur(5px);
+  /* Aplica blur no fundo */
+  z-index: -1;
+  /* Fica atrás do conteúdo */
 }
 
 .card-contato h1 {
@@ -265,7 +268,7 @@ input {
   padding-left: 10px;
 }
 
-textarea{
+textarea {
   background: transparent;
   border: 1px solid rgb(35, 45, 45);
   border-radius: 10px;
@@ -277,22 +280,22 @@ textarea{
   padding-top: 10px;
 }
 
-input{
+input {
   width: 420px;
   height: 50px;
   margin-top: 10px;
 }
 
-textarea{
+textarea {
   width: 420px;
   margin-top: 10px;
   max-height: 200px;
   resize: none;
 }
 
-input::placeholder{
+input::placeholder {
   position: absolute;
-  color:#aaa;
+  color: #aaa;
   font-family: 'Myfont';
   font-size: 0.7rem;
   margin-left: 10px;
@@ -300,9 +303,9 @@ input::placeholder{
   transform: translateY(-50%);
 }
 
-textarea::placeholder{
+textarea::placeholder {
   position: absolute;
-  color:#aaa;
+  color: #aaa;
   font-family: 'Myfont';
   font-size: 0.7rem;
   margin-left: 10px;
@@ -310,12 +313,13 @@ textarea::placeholder{
   transform: translateY(-50%);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border: 2px solid rgb(1, 204, 204);
 }
 
-#btn-contato{
+#btn-contato {
   position: relative;
   left: 20%;
   transform: translateX(-50%);
@@ -332,14 +336,14 @@ input:focus, textarea:focus {
   box-shadow: 0 0 10px #040305;
 }
 
-#btn-contato:active{
+#btn-contato:active {
   position: relative;
   left: 7%;
   transform: translateX(-50%);
   transform: scale(0.95);
 }
 
-.card-contato-txt{
+.card-contato-txt {
   position: absolute;
   top: 20%;
   width: 40%;
@@ -347,7 +351,8 @@ input:focus, textarea:focus {
   font-family: 'Myfont';
   font-size: 2rem;
 }
-.card-contato-txt p{
+
+.card-contato-txt p {
   position: relative;
   margin-top: 50px;
   width: 100%;
@@ -371,7 +376,8 @@ input:focus, textarea:focus {
   -webkit-mask-size: contain;
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
-  overflow: hidden; /* esconde luz fora da área */
+  overflow: hidden;
+  /* esconde luz fora da área */
 }
 
 .svg-contato {
@@ -385,7 +391,8 @@ input:focus, textarea:focus {
   position: absolute;
   left: 0;
   top: 0;
-  width: 70%; /* largura do feixe */
+  width: 70%;
+  /* largura do feixe */
   height: 100%;
   z-index: 20;
   background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
@@ -397,19 +404,124 @@ input:focus, textarea:focus {
     transform: translateX(200%);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     transform: translateX(-10%);
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     transform: translateX(-50%);
   }
 }
 
+.svg-boca-login {
+  position: absolute;
+  right: 0;
+  top: 30vh;
+  width: 100%;
+  height: 20%;
+  overflow: hidden;
+  z-index: -10;
+  mask: url('boca.svg');
+  -webkit-mask: url('boca.svg');
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* EFEITO DE LUZ ANIMADO */
+.svg-boca-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+ background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
+animation: LUZFECHANDO 10s linear infinite;
+  pointer-events: none;
+}
+.svg-olhos-login{
+  position: absolute;
+  top: -10vh;
+  right: 0;
+  width: 100%;
+  height: 20%;
+  overflow: hidden;
+  z-index: -10;
+  mask: url('olhos.svg');
+  -webkit-mask: url('olhos.svg');
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* EFEITO DE LUZ ANIMADO */
+.svg-olhos-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+   background: linear-gradient(to left, transparent 45%, #00ffcc 50%, transparent 55%);
+  pointer-events: none;
+  animation: LUZFECHANDO 10s linear infinite;
+}
+
+#btn-login {
+  position: relative;
+  left: 20%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #eee;
+  font-weight: 500;
+  color: #111;
+  font-family: 'Myfont';
+  font-size: 0.8rem;
+  box-shadow: 0 0 10px #040305;
+}
+
+
+#navbar-fixed {
+  position: fixed;
+  z-index: 999;
+  background: transparent;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+#perfil-icon {
+  position: relative;
+  right: 10vh;
+}
+
+#logo {
+  position: relative;
+  left: 10vh;
+}
 
 .txt-sobre h2 {
   color: #eee;
@@ -666,24 +778,24 @@ section.home-page {
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
   z-index: 999;
   background: transparent;
-  border-radius: 50px;
+  border-radius: 14px;
   position: fixed;
-  top: 30px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   /* centraliza horizontalmente */
   z-index: 1000;
   /* garante que fique acima de outros elementos */
-  width: 70%;
+  width: 25%;
   /* largura responsiva */
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.250);
   /* Fundo escuro translúcido */
   backdrop-filter: blur(10px);
   /* Efeito de desfoque no que está atrás */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   /* Sombrinha leve */
 }
 
@@ -959,16 +1071,18 @@ section.home-page {
   color: white;
   z-index: 1;
 }
- 
-.card-sobre::before { 
+
+.card-sobre::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(1px); /* Aplica blur no fundo */
-  z-index: -1; /* Fica atrás do conteúdo */
+  backdrop-filter: blur(1px);
+  /* Aplica blur no fundo */
+  z-index: -1;
+  /* Fica atrás do conteúdo */
 }
 
 .card-sobre-p {
@@ -995,15 +1109,17 @@ section.home-page {
   z-index: 1;
 }
 
-.card-sobre-ep::before { 
+.card-sobre-ep::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px); /* Aplica blur no fundo */
-  z-index: -1; /* Fica atrás do conteúdo */
+  backdrop-filter: blur(5px);
+  /* Aplica blur no fundo */
+  z-index: -1;
+  /* Fica atrás do conteúdo */
 }
 
 /* Responsividade dos flip-cards */
@@ -1544,4 +1660,50 @@ main {
   .right a {
     font-size: 1.2rem;
   }
+}
+
+.card-login {
+  position: relative;
+  justify-content: center;
+  top: 0;
+  border-radius: 24px;
+  margin-top: 20vh;
+  width: 20%;
+  overflow: hidden;
+  z-index: 999;
+  background: rgba(35, 45, 45, 0.2);
+  border: 1px solid rgb(35, 45, 45);
+}
+
+.card-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  /* Aplica blur no fundo */
+  z-index: -1;
+  /* Fica atrás do conteúdo */
+}
+
+.card-login h1 {
+  color: #eee;
+  font-family: 'MyFont';
+  margin-left: 5vh;
+  margin-top: 5vh;
+  font-size: 1.7rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card-login label {
+  color: #eee;
+  font-family: 'MyFont';
+  margin-left: 5vh;
+  margin-top: 5vh;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
 }

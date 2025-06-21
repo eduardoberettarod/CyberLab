@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+        <div id="navbar"></div>
+        <script>
+            //Carregar conteúdo do navbar
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o navbar:', error);
+                });
+        </script>
+            <div id="navbar-fixed"></div>
+        <script>
+            //Carregar conteúdo do navbar
+            fetch('navbar-fixed.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-fixed').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o navbar fixednavbar-fixed:', error);
+                });
+        </script>
     <section>
         
     </section>

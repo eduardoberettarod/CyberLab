@@ -46,6 +46,19 @@
                     console.error('Erro ao carregar o navbar:', error);
                 });
         </script>
+            <div id="navbar-fixed"></div>
+        <script>
+            //Carregar conteúdo do navbar
+            fetch('navbar-fixed.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-fixed').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o navbar fixednavbar-fixed:', error);
+                });
+        </script>
+        
         <section id="home" class="home-page">
             <div class="txt-tittle">
                 <h1>

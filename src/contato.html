@@ -24,6 +24,18 @@
                 console.error('Erro ao carregar o navbar:', error);
             });
     </script>
+    <div id="navbar-fixed"></div>
+    <script>
+        //Carregar conteúdo do navbar
+        fetch('navbar-fixed.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-fixed').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o navbar fixednavbar-fixed:', error);
+            });
+    </script>
     <section id="forms">
         <div class="svg-contato-wrapper">
             <svg width="686" height="173" viewBox="0 0 686 173" fill="none" class="svg-contato"
