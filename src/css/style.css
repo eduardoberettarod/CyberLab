@@ -766,7 +766,7 @@ section.home-page {
   /* centraliza horizontalmente */
   z-index: 1000;
   /* garante que fique acima de outros elementos */
-  width: 25%;
+  width: 45%;
   /* largura responsiva */
 }
 
@@ -1653,7 +1653,11 @@ main {
   padding-bottom: 50px;
   z-index: 0;
 }
-
+@media (min-width: 1024px) {
+  .card-login {
+  width: 32%;
+  }
+}
 .borda-animada {
   position: absolute;
   top: 0;
