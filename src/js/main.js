@@ -103,52 +103,6 @@ window.addEventListener("resize", () => {
   updateObjectScale();
 });
 
-// Efeito nos cards
-document.querySelectorAll('.card-sobre, .card-sobre-ep').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mouse-x', `${x}%`);
-    card.style.setProperty('--mouse-y', `${y}%`);
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.setProperty('--mouse-x', `50%`);
-    card.style.setProperty('--mouse-y', `50%`);
-  });
-});
-const section = document.getElementById('home');
-const cursor = section.querySelector('.cursor-personalizado');
-
-section.addEventListener('mousemove', (e) => {
-  const rect = section.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  // Move o cursor personalizado dentro da section
-  cursor.style.left = `${x}px`;
-  cursor.style.top = `${y}px`;
-
-  // Cria o rastro na posição do mouse dentro da section
-  const rastro = document.createElement('div');
-  rastro.classList.add('rastro');
-  rastro.style.left = `${x}px`;
-  rastro.style.top = `${y}px`;
-  section.appendChild(rastro);
-
-  rastro.addEventListener('animationend', () => {
-    rastro.remove();
-  });
-});
-
-section.addEventListener('mouseleave', () => {
-  cursor.style.display = 'none';
-});
-
-section.addEventListener('mouseenter', () => {
-  cursor.style.display = 'block';
-});
 
 //pre-loader
 const loaderContainer = document.querySelector('.loader-container');
@@ -302,3 +256,28 @@ window.addEventListener('scroll', () => {
     carouselContainer.scrollLeft = scrollY - offsetTop;
   }
 });
+//carrossel
+  const cards = document.querySelectorAll(".card-carrossel");
+  const radios = document.querySelectorAll("#indicador input[type='radio']");
+  const carrossel = document.getElementById("carrousel");
+
+  carrossel.addEventListener("scroll", () => {
+    const scrollLeft = carrossel.scrollLeft;
+    const cardWidth = cards[0].offsetWidth + 16; // inclui gap
+    const index = Math.round(scrollLeft / cardWidth);
+    if (radios[index]) {
+      radios[index].checked = true;
+    }
+  });
+
+  radios.forEach((radio, index) => {
+    radio.addEventListener("click", () => {
+      const cardWidth = cards[0].offsetWidth + 16; // inclui gap
+      carrossel.scrollTo({
+        left: index * cardWidth,
+        behavior: "smooth"
+      });
+    });
+  });
+
+

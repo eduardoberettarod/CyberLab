@@ -165,6 +165,133 @@ body {
   transform: rotateZ(-25deg);
 }
 
+.carrousel {
+  position: absolute;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100vw;
+  transform: translateX(90%);
+  scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
+}
+
+.card-carrossel {
+  scroll-snap-align: start;
+  max-width: 500px;
+  background: rgba(35, 45, 45, 0.1);
+  border: 1px solid rgb(35, 45, 45);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+  padding: 2rem;
+}
+
+#indicador {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 20px;
+  background: rgba(35, 45, 45, 0.1);
+  border: 1px solid rgb(35, 45, 45);
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+}
+
+#indicador input[type="radio"] {
+  display: none;
+}
+
+#indicador .dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#indicador .dots label {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #555;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.5s, transform 2s;
+  transition: filter 0.5s, width 0.5s, height 0.5s, border-radius 0.5s;
+}
+
+#indice1:checked ~ .dots label[for="indice1"],
+#indice2:checked ~ .dots label[for="indice2"],
+#indice3:checked ~ .dots label[for="indice3"],
+#indice4:checked ~ .dots label[for="indice4"],
+#indice5:checked ~ .dots label[for="indice5"],
+#indice6:checked ~ .dots label[for="indice6"],
+#indice7:checked ~ .dots label[for="indice7"] {
+  background-color: #08e4e4;
+  filter: drop-shadow(0px 0px 10px #08e4e4);
+  width: 19px;
+  height: 10px;
+  border-radius: 24px;
+
+}
+
+/* chapéus e posicionamento */
+.title-with-hat {
+  position: relative;
+}
+
+.title-with-hat .hat {
+  position: absolute;
+  right: 5vh;
+  top: 5%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 40px;
+  z-index: 1;
+}
+
+.hat .crown {
+  width: 30px;
+  height: 20px;
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hat .brim {
+  width: 50px;
+  height: 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.white-hat-mini .crown, .white-hat-mini .brim { background: #f2f2f2; }
+.black-hat-mini .crown, .black-hat-mini .brim { background: #2e2e2e; }
+.gray-hat .crown, .gray-hat .brim { background: #777; }
+.red-hat .crown, .red-hat .brim { background: #c0392b; }
+.blue-hat .crown, .blue-hat .brim { background: #2980b9; }
+.green-hat .crown, .green-hat .brim { background: #27ae60; }
+.purple-hat .crown, .purple-hat .brim { background: #8e44ad; }
+
+.title-with-hat h1.text-cards {
+  position: relative;
+  left: 4vh;
+}
+
+
 @keyframes anima {
   0% {
     transform: translateY(100vh) scale(0);
@@ -431,7 +558,8 @@ textarea:focus {
   z-index: -10;
   opacity: 0;
   filter: drop-shadow(0 0 5px #00ffcc);
-   transition: opacity 1s ease; /* transição suave de 0.5 segundos */
+  transition: opacity 1s ease;
+  /* transição suave de 0.5 segundos */
 }
 
 .svg-olhos-login {
@@ -445,7 +573,7 @@ textarea:focus {
   z-index: -10;
   opacity: 0;
   filter: drop-shadow(0 0 5px #00ffcc);
- transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 
 #btn-login {
@@ -1390,38 +1518,32 @@ html {
   opacity: 1;
 }
 
-.carousel-container {
-  height: 100vh;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  scroll-snap-type: x mandatory;
-  display: flex;
-  align-items: center;
+#carrossel-section {
+  width: 100vw;
+  position: relative;
 }
 
-.carousel {
-  display: flex;
-  gap: 20px;
-  padding: 0 50px;
+.card-carrossel h1,
+.card-carrossel p{
+  margin-left: 4vh;
+  margin-right: 4vh;
+  margin-top: 5vh;
+  font-family: 'myFont', sans-serif;
 }
 
-.card-carrossel {
-  scroll-snap-align: center;
-  width: 300px;
-  height: 400px;
-  background: #222;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+.card-carrossel p {
+font-size: clamp(0.5rem, 1.2vw + 0.2rem, 1rem);
+padding-bottom: 4vh;
 }
 
-.carousel-container::-webkit-scrollbar {
-  display: none;
+.text-cards{
+  color: #eee;
+  font-family: 'myFont';
+  text-align: center;
+  font-size: clamp(1.2rem, 3vw + 0.5rem, 2rem);
+  margin-bottom: clamp(1rem, 3vw + 0.5rem, 2rem);
+  padding: 0 1rem;
+  /* Adiciona um pouco de espaçamento horizontal */
 }
 
 .txt-hackers {
@@ -1653,11 +1775,13 @@ main {
   padding-bottom: 50px;
   z-index: 0;
 }
+
 @media (min-width: 1024px) {
   .card-login {
-  width: 32%;
+    width: 32%;
   }
 }
+
 .borda-animada {
   position: absolute;
   top: 0;
