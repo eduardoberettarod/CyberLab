@@ -1781,6 +1781,11 @@ main {
     width: 32%;
   }
 }
+@media (min-width: 2560px) {
+  .card-login {
+    width: 19.6%;
+  }
+}
 
 .borda-animada {
   position: absolute;
