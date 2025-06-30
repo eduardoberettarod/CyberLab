@@ -64,7 +64,7 @@ body {
 }
 
 .txt-simulador-black {
-  color: black;
+  color: #2e2e2e;
   font-family: 'myFont', sans-serif;
   font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
 }
@@ -174,7 +174,7 @@ body {
   gap: 1rem;
   padding: 2rem;
   width: 100vw;
-  transform: translateX(90%);
+  transform: translateX(45%);
   scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
 }
 
@@ -223,7 +223,7 @@ body {
   background-color: #555;
   display: inline-block;
   cursor: pointer;
-  transition: background-color 0.5s, transform 2s;
+  transition: background-color 0.5s, transform 0.7s;
   transition: filter 0.5s, width 0.5s, height 0.5s, border-radius 0.5s;
 }
 
@@ -1090,11 +1090,6 @@ section.home-page {
 }
 
 .card-simulacoes-black {
-  --glow-color: rgba(200, 200, 200, 0.7);
-  /* cinza clarinho para glow */
-  --glow-spread-color: rgba(255, 255, 255, 0.25);
-  --enhanced-glow-color: #ffffff;
-
   position: relative;
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), transparent 70%);
   border: 1.5px solid rgba(200, 200, 200, 0.3);
@@ -1113,22 +1108,7 @@ section.home-page {
   cursor: pointer;
 }
 
-.card-simulacoes-black:hover {
-  border-color: var(--glow-color);
-  box-shadow:
-    0 0 1.2em 0.3em var(--glow-color),
-    0 0 2.5em 0.7em var(--glow-spread-color),
-    inset 0 0 0.7em 0.3em var(--glow-color);
-  color: #fff;
-  /* texto fica branco no hover */
-  text-shadow: 0 0 0.6em var(--glow-color);
-}
-
 .card-simulacoes-white {
-  --glow-color: #ffffff;
-  --glow-spread-color: rgba(255, 255, 255, 0.3);
-  --enhanced-glow-color: #ffffff;
-
   position: relative;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 70%);
   border: 1.5px solid rgba(255, 255, 255, 0.3);
@@ -1144,16 +1124,6 @@ section.home-page {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
-}
-
-.card-simulacoes-white:hover {
-  border-color: var(--glow-color);
-  box-shadow:
-    0 0 1.2em 0.3em var(--glow-color),
-    0 0 2.5em 0.7em var(--glow-spread-color),
-    inset 0 0 0.7em 0.3em var(--glow-color);
-  color: var(--glow-color);
-  text-shadow: 0 0 0.6em var(--glow-color);
 }
 
 .card-simulacoes p {
