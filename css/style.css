@@ -173,8 +173,8 @@ body {
   scroll-behavior: smooth;
   gap: 1rem;
   padding: 2rem;
-  width: 100vw;
-  transform: translateX(45%);
+  width: 95vw;
+  transform: translateX(5%);
   scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
 }
 
@@ -194,12 +194,27 @@ body {
   padding: 2rem;
 }
 
+.card-carrossel-text {
+  scroll-snap-align: start;
+  margin-top: 50px;
+  max-width: 500px;
+  background: transparent;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-size: 1rem;
+  font-family: 'Myfont';
+  color: white;
+  text-align: left;
+  padding: 2rem;
+}
 #indicador {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  margin-top: 20px;
+  margin-top: 370px;
   background: rgba(35, 45, 45, 0.1);
   border: 1px solid rgb(35, 45, 45);
   padding: 5px 10px 5px 10px;
@@ -222,6 +237,7 @@ body {
   border-radius: 50%;
   background-color: #555;
   display: inline-block;
+  top: 50%;
   cursor: pointer;
   transition: background-color 0.5s, transform 0.7s;
   transition: filter 0.5s, width 0.5s, height 0.5s, border-radius 0.5s;
@@ -236,10 +252,10 @@ body {
 #indice7:checked ~ .dots label[for="indice7"] {
   background-color: #08e4e4;
   filter: drop-shadow(0px 0px 10px #08e4e4);
-  width: 19px;
+  width: 20px;
   height: 10px;
   border-radius: 24px;
-
+  top: 50%;
 }
 
 /* chapéus e posicionamento */
@@ -1514,16 +1530,6 @@ padding-bottom: 4vh;
   margin-bottom: clamp(1rem, 3vw + 0.5rem, 2rem);
   padding: 0 1rem;
   /* Adiciona um pouco de espaçamento horizontal */
-}
-
-.txt-hackers {
-  position: absolute;
-  left: 20vh;
-  width: 25%;
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 30vh;
-  font-family: 'myFont';
 }
 
 footer {
