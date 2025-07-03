@@ -63,12 +63,6 @@ body {
   opacity: 0.7;
 }
 
-.txt-simulador-black {
-  color: #2e2e2e;
-  font-family: 'myFont', sans-serif;
-  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
-}
-
 .txt-simulador-white {
   color: white;
   font-family: 'myFont', sans-serif;
@@ -304,9 +298,25 @@ body {
 
 .title-with-hat h1.text-cards {
   position: relative;
-  left: 4vh;
+  left: -12vh;
 }
 
+#link-white-hat,
+#link-black-hat{
+  text-decoration: none;
+  font-family: 'myFont', sans-serif;
+  font-size: clamp(0.5rem, 1vw + 0.2rem, 1rem);
+  background: #111;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: #eee;
+  border: 1px solid rgb(35, 45, 45);
+}
+
+#link-white-hat:hover,
+#link-black-hat:hover {
+  box-shadow: 0 0 5px #08e4e420,  0 0 10px #08e4e420,  0 0 20px #08e4e420, 0 0 50px #08e4e420, 0 0 100px #08e4e420;
+}
 
 @keyframes anima {
   0% {
@@ -712,7 +722,7 @@ textarea:focus {
   padding: clamp(0.3rem, 0.7vw, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
   max-width: clamp(180px, 50vw, 280px);
   border-radius: 50px;
-  border: 2px solid cyan;
+  border: 1.5px solid rgb(35, 45, 45);
   position: absolute;
   bottom: 15%;
   right: 5%;
@@ -733,7 +743,7 @@ textarea:focus {
 }
 
 .a-home .circle {
-  background-color: cyan;
+  background-color: #00ffff;
   width: clamp(1.2rem, 2.5vw, 1.6rem);
   height: clamp(1.2rem, 2.5vw, 1.6rem);
   border-radius: 50%;
@@ -748,7 +758,7 @@ textarea:focus {
 }
 
 .a-home .arrow {
-  font-weight: bold;
+  font-weight:bolder;
   transform: translateY(-1px);
   /* pequena correção visual */
   z-index: 10;
@@ -1107,9 +1117,8 @@ section.home-page {
 
 .card-simulacoes-black {
   position: relative;
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), transparent 70%);
-  border: 1.5px solid rgba(200, 200, 200, 0.3);
-  box-shadow: 0 20px 25px rgba(200, 200, 200, 0.15);
+  background: transparent;
+  border: 1px solid rgb(35, 45, 45);
   border-radius: 12px;
   margin: 20px auto;
   padding: 25px 30px;
@@ -1126,9 +1135,8 @@ section.home-page {
 
 .card-simulacoes-white {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 70%);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 20px 25px rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border: 1px solid rgb(35, 45, 45);
   border-radius: 12px;
   margin: 20px auto;
   padding: 25px 30px;
