@@ -765,8 +765,7 @@ textarea:focus {
 }
 
 .a-home:hover {
-  background-color: rgba(0, 255, 255, 0.1);
-  border-color: cyan;
+  border-color: #00ffff;
   z-index: 10;
 }
 
