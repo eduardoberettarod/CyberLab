@@ -1868,6 +1868,7 @@ main {
   width: 1px;
   height: 7vw;
   top: 521px;
+  left: 50%;
 }
 
 .txt-equipe-span::before {
@@ -2026,4 +2027,39 @@ main {
   font-family: 'Myfont', sans-serif;
   font-size: clamp(0.7rem, 1vw + 0.15rem, 0.95rem);
   color: #eee;
+}
+#three-canvas {
+  position: absolute; /* ou fixed, relativo ao que quiser */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* controle a ordem */
+  pointer-events: none; /* opcional, para clicks passarem pra trás */
+}
+
+#servicos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+}
+
+#servicos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse 12% 13% at 75% 35%, rgba(0, 255, 255, 0.4) 30%, transparent 80%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -2;
 }
