@@ -1670,6 +1670,7 @@ footer p {
   font-family: 'myFont', sans-serif;
   font-weight: 600;
   pointer-events: none;
+  animation: brilhoCibernetico 5s ease-in-out infinite;
 }
 
 .left p {
@@ -1866,7 +1867,7 @@ main {
   background: linear-gradient(to bottom, #777, #777, transparent);
   width: 1px;
   height: 7vw;
-  top: 26.7%;
+  top: 521px;
 }
 
 .txt-equipe-span::before {
@@ -1881,7 +1882,7 @@ main {
 .txt-equipe-p {
   position: absolute;
   font-family: 'MyFont', sans-serif;
-  top: 29%;
+  top: 540px;
   right: 25%;
   font-size: 1.2rem;
   color: #eee;
@@ -1890,8 +1891,8 @@ main {
 
 .seta-equipe {
   position: absolute;
-  top: 30%;
-  left: 20%;
+  top: 565px;
+  left: 21%;
   transition: transform 1s ease, filter 1s ease;
 }
 
@@ -1903,7 +1904,7 @@ main {
 
 .txt-p {
   position: absolute;
-  top: 30.5%;
+  top: 580px;
   left: 26%;
   transform: translate(-50%, -50%);
   font-family: 'MyFont', sans-serif;
@@ -1911,4 +1912,118 @@ main {
   color: #eee;
   text-align: center;
   max-width: 80vw;
+}
+.services-container{
+  position: relative;
+  display: flex;
+  gap: 25px;
+}
+
+.card-services{
+  position: relative;
+  background: rgba(35, 45, 45, 0.1);
+  border: 1px solid rgb(35, 45, 45);
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 30px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-bottom: auto;
+  max-width: 400px;
+  height: 450px;
+  color: white;
+}
+
+.card-services h2{
+  font-family: 'Myfont', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
+  color: #eee;
+  padding-top: 75px;
+}
+
+.card-services p {
+  font-family: 'Myfont', sans-serif;
+  font-size: clamp(0.7rem, 1vw + 0.15rem, 0.95rem);
+  line-height: 1.4;
+  text-align: left;
+  padding-top: 50px;
+  color: #eee;
+}
+
+.equipe-container{
+  position: relative;
+  margin-top: 90px;
+  display: flex;
+  gap: 150px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.card-personagem{
+  position: relative;
+  background: rgba(35, 45, 45, 0.1);
+  border: 1px solid rgb(35, 45, 45);
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 30px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-bottom: auto;
+  max-width: 500px;
+  height: 370px;
+  color: white;
+}
+
+@keyframes brilhoCibernetico {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card-personagem-h3 {
+  font-family: 'MyFont', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem);
+  background: linear-gradient(90deg, #08e4e4, #08e4e490, #08e4e475, #08e4e450, #08e4e425);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  pointer-events: none;
+  padding-top: 75px;
+  animation: brilhoCibernetico 5s ease-in-out infinite;
+}
+
+
+.card-personagem-h3::before {
+  content: "";
+  position: absolute;
+  background: #08e4e4;
+}
+
+.card-personagem p {
+  font-family: 'Myfont', sans-serif;
+  font-size: clamp(0.7rem, 1vw + 0.15rem, 0.95rem);
+  line-height: 1.4;
+  text-align: left;
+  padding-top: 50px;
+  color: #eee;
+}
+
+.card-personagem li {
+  margin-bottom: 10px;
+  font-family: 'Myfont', sans-serif;
+  font-size: clamp(0.7rem, 1vw + 0.15rem, 0.95rem);
+  color: #eee;
 }
